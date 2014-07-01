@@ -1,0 +1,22 @@
+<table border="0" cellspacing="0" cellpadding="3" width="100%">
+  <tr class="tableHeader">
+    <td nowrap>Category Name</td>
+    <td nowrap>Functions</td>    
+  </tr>
+  <tmpl_if name='HasMerchantCategorys'>
+    <tmpl_loop name='MerchantCategorys'>
+	  <tr class="tableRow" onmouseover="this.className='tableRowHover'" onmouseout="this.className='tableRow'">
+	    <td nowrap><a href="EditMerchantCategory.php?id=<tmpl_var name='MerchantCategoryID'>"><tmpl_var name='Name'></a></td>
+	    <td nowrap><a href="MerchantCategories.php?delete=<tmpl_var name='MerchantCategoryID'>">Delete</a></td>    
+	  </tr>
+    </tmpl_loop>
+  <tmpl_else>
+    <tr>
+      <td colspan="5" align="center">No Categories</td>
+    </tr>
+  </tmpl_if>
+    <tr>
+      <td colspan="5"><a href="EditMerchantCategory.php">Add Category</a></td>
+    </tr>
+  </tr>
+</table>

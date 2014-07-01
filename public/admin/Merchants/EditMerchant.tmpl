@@ -1,0 +1,115 @@
+<script language="javascript" src="<tmpl_var name='SITE_URL'>/global/scriptaculous/prototype.js"></script>
+<script language="javascript" src="<tmpl_var name='SITE_URL'>/global/scriptaculous/scriptaculous.js"></script>
+<script language="javascript" src="<tmpl_var name='SITE_URL'>/global/scriptaculous/effects.js"></script>
+<script type="text/javascript">
+function reloadPage()
+{
+	window.location.reload();
+}
+
+function makeFeaturedBusiness()
+{
+	var params = "MerchantID=<tmpl_var name='MerchantID'>"
+	new Ajax.Request("SetFeaturedBusiness.php",{parameters:params,onComplete:reloadPage});
+}
+</script>
+<form action="EditMerchant.php" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="id" value="<tmpl_var name='MerchantID'>">
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+<tmpl_if name='ShowFeaturedMerchantBox'>
+<tr>
+<td colspan="2" width="100%" style="border: 1px solid #008800; background-color:#00CC00; font-weight:bold;">This is the current featured merchant.</td>
+</tr>
+</tmpl_if>
+  <tr>
+<td nowrap>Category:</td>
+<td width="100%">
+<select name="MerchantCategoryID" id="MerchantCategoryID">
+  <option value="">-Select One-</option>
+  <tmpl_if name='HasMerchantCategoryIDs'>
+    <tmpl_loop name='MerchantCategoryIDs'>
+      <tmpl_if name='selected'>
+        <option value="<tmpl_var name='MerchantCategoryID'>" selected><tmpl_var name='Name'></option>
+      <tmpl_else>
+        <option value="<tmpl_var name='MerchantCategoryID'>"><tmpl_var name='Name'></option>
+      </tmpl_if>
+    </tmpl_loop>
+  </tmpl_if>
+</select>
+</td>
+</tr>
+<tr>
+<td nowrap>Business Name:</td>
+<tmpl_if name='MerchantID'>
+<td width="100%"><input type="text" name="Name" value="<tmpl_var name='Name'>"> <tmpl_unless name='ShowFeaturedMerchantBox'><input type="button" name="MakeFeatured" onclick="makeFeaturedBusiness()" value="Make Featured Business"></tmpl_unless></td>
+<tmpl_else>
+<td width="100%"><input type="text" name="Name" value="<tmpl_var name='Name'>"></td>
+</tmpl_if>
+</tr>
+<tr>
+<td nowrap>Phone:</td>
+<td width="100%"><input type="text" name="Phone" value="<tmpl_var name='Phone'>"></td>
+</tr>
+<tr>
+<td nowrap>Website:</td>
+<td width="100%">http://<input type="text" name="Website" value="<tmpl_var name='Website'>"></td>
+</tr>
+<tr>
+<td nowrap>Email:</td>
+<td width="100%"><input type="text" name="Email" value="<tmpl_var name='Email'>"></td>
+</tr>
+<tr>
+<td nowrap>Password:</td>
+<td width="100%"><input type="password" name="Password" value="<tmpl_var name='Password'>"></td>
+</tr>
+<tr>
+<td nowrap>Address1:</td>
+<td width="100%"><input type="text" name="Address1" value="<tmpl_var name='Address1'>"></td>
+</tr>
+<tr>
+<td nowrap>Address2:</td>
+<td width="100%"><input type="text" name="Address2" value="<tmpl_var name='Address2'>"></td>
+</tr>
+<tr>
+<td nowrap>City:</td>
+<td width="100%"><input type="text" name="City" value="<tmpl_var name='City'>"></td>
+</tr>
+<tr>
+<td nowrap>State:</td>
+<td width="100%">
+  <select name="State" id="State">
+  <option value="">-Select One-</option>
+    <tmpl_loop name='States'>
+      <tmpl_if name='selected'>
+        <option value="<tmpl_var name='short_name'>" selected><tmpl_var name='short_name'></option>
+      <tmpl_else>
+        <option value="<tmpl_var name='short_name'>"><tmpl_var name='short_name'></option>
+      </tmpl_if>
+    </tmpl_loop>
+  </select>
+</td>
+</tr>
+<tr>
+<td nowrap>ZipCode:</td>
+<td width="100%"><input type="text" name="ZipCode" value="<tmpl_var name='ZipCode'>"></td>
+</tr>
+<tr>
+<td nowrap valign="top">Description:</td>
+<td width="100%"><textarea name="Description" rows="10" cols="100"><tmpl_var name='Description'></textarea></td>
+</tr>
+<tr>
+<td nowrap valign="top">Photo:</td>
+<td width="100%"><input type="file" name="PhotoUpload" id="PhotoUpload">
+<tmpl_if name='Photo'>
+<br>
+<img src="<tmpl_var name='SITE_URL'>/business_images/<tmpl_var name='Photo'>" width="<tmpl_var name='PhotoWidth'>" height="<tmpl_var name='PhotoHeight'>" border="0">
+</tmpl_if>
+</td>
+</tr>
+
+  <tr>
+    <td nowrap>&nbsp;</td>
+    <td width="100%"><input type="submit" name="Submit" value="Submit"></td>
+  </tr>
+</table>
+</form> 

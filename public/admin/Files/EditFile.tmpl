@@ -1,0 +1,83 @@
+<!-- tinyMCE -->
+<script language="javascript" type="text/javascript" src="<tmpl_var name='SYSTEM_URL'>/lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({
+	// General options
+	mode : "textareas",
+	theme : "advanced",
+	<tmpl_if name='EditFullPage'>
+	plugins : "phpimage,safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,fullpage",
+	<tmpl_else>
+	plugins : "phpimage,safari,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+	</tmpl_if>
+
+	// Theme options
+	theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,phpimage,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+	theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+	theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true,
+	theme_advanced_disable: "image,advimage",
+	document_base_url : "<tmpl_var name='SYSTEM_URL'>",
+
+	// Drop lists for link/image/media/template dialogs
+	external_image_list_url : "admin/Files/getimages.php",
+	content_css:"/SpryAssets/SpryMenuBarHorizontal.css,/SpryAssets/SpryMenuBarVertical.css,/css/layout.css"
+
+});
+
+  function myFileBrowser (field_name, url, type, win) {
+
+    // alert("Field_Name: " + field_name + "\nURL: " + url + "\nType: " + type + "\nWin: " + win); // debug/testing
+
+    /* If you work with sessions in PHP and your client doesn't accept cookies you might need to carry
+       the session name and session ID in the request string (can look like this: "?PHPSESSID=88p0n70s9dsknra96qhuk6etm5").
+       These lines of code extract the necessary parameters and add them back to the filebrowser URL again. */
+
+    var cmsURL = window.location.toString();    // script URL - use an absolute path!
+    if (cmsURL.indexOf("?") < 0) {
+        //add the type as the only query parameter
+        cmsURL = cmsURL + "?type=" + type;
+    }
+    else {
+        //add the type as an additional query parameter
+        // (PHP session ID is now included if there is one at all)
+        cmsURL = cmsURL + "&type=" + type;
+    }
+
+    tinyMCE.activeEditor.windowManager.open({
+        file : cmsURL,
+        title : 'My File Browser',
+        width : 420,  // Your dimensions may differ - toy around with them!
+        height : 400,
+        resizable : "yes",
+        inline : "yes",  // This parameter only has an effect if you use the inlinepopups plugin!
+        close_previous : "no"
+    }, {
+        window : win,
+        input : field_name
+    });
+    return false;
+  }
+
+
+
+</script>
+<tmpl_if name='Message'><span style="color:#FF0000;font-weight:bold;"><tmpl_var name='Message'></span></tmpl_if>
+<form action="EditFile.php" method="POST" enctype="multipart/form-data">
+<input type=hidden name="Filename" value="<tmpl_var name='Filename'>">
+<table border="0" cellspacing="0" cellpadding="3">
+<tr>
+  <td nowrap valign="top"><B>Edit Content: <tmpl_var name='Filename'><B></td>
+</tr>
+<tr>
+  <td width="100%"><textarea name="Content" rows="30" cols="120"><tmpl_var name='Content'></textarea></td>
+</tr>
+<tr>
+  <td width="100%"><input type="submit" name="Save" value="Save"></td>
+</tr>
+</table>
+</form>

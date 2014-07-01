@@ -1,0 +1,38 @@
+<script language="javascript">
+function copyUser(id){
+window.open('CopyUser.php?id='+id,'CopyWin','width=400,height=400,scrollbars=no,toolbars=no,resizable=yes,statusbar=no');
+}
+function renameUser(id){
+window.open('RenameUser.php?id='+id,'RenameWin','width=400,height=400,scrollbars=no,toolbars=no,resizable=yes,statusbar=no');
+}
+
+</script>
+<table width="100%" border="0" cellspacing="0" cellpUserding="3">
+  <tr>
+    <td align="left" style="color: #FFFFFF; padding:2px; background-color: #000000;" width="100%">
+	Name</td>
+    <td align="left" style="color: #FFFFFF; padding:2px; background-color: #000000;" nowrap>
+	Functions</td>
+  </tr>
+  <tmpl_if name='HasUsers'>
+  <tmpl_loop name='Users'>
+    <tr>
+	<td align="left" valign="top" style="border-bottom: solid #cccccc; border-width: 1px; color: #000000; padding:2px; background-color: #f3f3f3;" nowrap>
+	<a href="EditUser.php?id=<tmpl_var name='UserID'>"><tmpl_var name='Name'></a></td>
+	<td align="right" valign="top" style="border-bottom: solid #cccccc; border-width: 1px; color: #000000; padding:2px; background-color: #f3f3f3;" nowrap>
+	<a href="EditUser.php?id=<tmpl_var name='UserID'>">
+	<img src="../icons/edit_ico.gif" border="0"></a> &nbsp;&nbsp; 	
+	<a href="index.php?delete=<tmpl_var name='UserID'>">
+	<img src="../icons/delete_ico.gif" border="0"></a></td>
+    </tr>
+  </tmpl_loop>
+  <tmpl_else>
+  <tr><td colspan="2" align="center"><B>No Users</B></td></tr>
+  </tmpl_if>
+  <tr>
+    <td align="left" style="height: 4px; color: #FFFFFF; background-color: #000000;" width="100%" colspan="5"></td></tr>  
+  <tr>
+    <td colspan="2"><a href="EditUser.php">
+    <img src="../icons/adduser_ico.gif" border="0">Add Admin User</a></td>
+  </tr>
+</table>

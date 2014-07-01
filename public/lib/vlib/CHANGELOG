@@ -1,0 +1,99 @@
+CHANGELOG - all dates are in English format (dd/mm/yyyy)
+------------
+
+Version
+--------
+
+3.0.1 (a few bug fixes and enhancements)
+ |
+ |
+ |-- vlibTemplate feature inhancement
+ |    Added a 3 functions allowing for an easier way to add loops.
+ |    Suggested by Claus Van Beek, http://www.clausvb.de.
+ |
+ |
+ |-- documentation
+ |    added new functions to the docs, and the link to Claus Van Beek's online documentation
+ |    in German.
+ |
+ |
+ |-- vlibMimeMail bug fix
+ |    Fixed a simple bug caused when attaching multiple attachments.
+ |    Bug found by Francesco Defilippo.
+ |
+ |
+ |-- examples update
+ |    Updated the examples, adding a new one for the new loops, and fixing 1 broken link
+ |    in the vlibTemplate_include1.html template file.
+ |
+ ----------------------------------------------------------------------------------------------------------
+
+
+3.0.0 (upgraded to new major version due to changes in naming mechanisms)
+ |
+ |
+ |-- vLIB naming mechanisms
+ |    as of 3.0.0 all vLIB class will start with vlib (lower case), i.e. vTemplate will now be vlibTemplate.
+ |    This is to avoid confusion with other classes which use similar names.
+ |
+ |
+ |-- vlibTemplate, new Global Context Variable
+ |    with the options TIME_PARSE and GLOBAL_CONTEXT_VARS both set to 1, a global variable called
+ |    __PARSE_TIME__ (2 underscores either side) will be set with the time taken to parse the template.
+ |
+ |
+ |-- vlibMimeMail new class
+ |    a new class to help with sending MIME encoded email with attachements, HTML mail, priority
+ |    setting and more. Please see the documentation.
+ |
+ |
+ |-- documentation
+ |    added new documentation for vlibMimeMail.
+ |
+ |
+ |-- vlibTemplateCache bug fix
+ |    bug reported by vscope in the forums which caused a problem with the caching due to the fact that
+ |    when PHP is installed as a CGI on Win32 or on IIS and possibly other server, the $PHP_SELF variable
+ |    includes the entire path to the executable, then to the script.
+ |    We now use $PATH_INFO if it's available, as it is in CGI and IIS but not as apache module, or $PHP_SELF
+ |    otherwise.
+ |
+ |
+ |-- vlibDate new class
+ |    a new class for manipulating dates outside of the 1970-2038 32-bit date range.
+ |    This class supports dates between 0001 and 9999 and has many functions to manipulate the date
+ |    and the way it's displayed. Please see the documentation.
+ |
+ |
+ |-- documentation
+ |    added new documentation for vlibDate.
+ |
+ |
+ |-- examples
+ |    restructured the examples directory and added examples for vlibMimeMail and vlibDate.
+ |    It is now possible to view the source of the examples whilst browsing.
+ |
+ ----------------------------------------------------------------------------------------------------------
+
+
+2.0.2
+ |
+ |
+ |-- vTemplate performance
+ |    made a 'MINOR' change to main pcre call which boosts performance by up to 80%.
+ |
+ |
+ |-- vTemplate performance
+ |    changed way in which vTemplate reads files into a var using fopen, fread, fclose
+ |    instead of implode(file()). Overall performace changes are minimal but this way of
+ |    reading the data is up to 30% faster.
+ |
+ ----------------------------------------------------------------------------------------------------------
+
+
+2.0.1
+ |
+ |
+ |-- Released vLIB.
+ |
+ ----------------------------------------------------------------------------------------------------------

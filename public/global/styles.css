@@ -1,0 +1,62 @@
+body, td, th
+{
+	font-family:Arial;
+	font-size:12px;
+}
+
+.tableRow
+{
+	font-family:Arial;
+	font-size:12px;
+}
+
+.tableRowHover
+{
+	font-family:Arial;
+	font-size:12px;
+	background-color:#AAAAFF;
+}
+
+.title
+{
+	font-family:Arial;
+	font-size:16px;
+	font-weight: bold;
+	
+}
+
+.nav_normal
+{
+	font-family:Arial;
+	font-size:12px;
+	background-image: url('../global/images/nav_background.gif');
+	height:25px;
+}
+
+.nav_hover
+{
+	font-family:Arial;
+	font-size:12px;
+	font-weight: bold;
+	background-image: url('../global/images/nav_background.gif');
+	height:25px;
+}
+.fontsm {
+	font-family:Arial;
+	font-size:10px;
+}
+.menu_title {
+	font-family:Arial;
+	font-size:13px;
+	font-weight: bold;
+	color: #000000;
+}
+	a:link{ color: #343434; TEXT-DECORATION: none; font-family: Tahoma, Arial, Helvetica; }
+	a:visited{ color: #343434; TEXT-DECORATION: none; font-family: Tahoma, Arial, Helvetica; }
+	a:active{ color: #343434; TEXT-DECORATION: none; font-family: Tahoma, Arial, Helvetica; }
+	a:hover{ color: #990000; TEXT-DECORATION: underline; font-family: Tahoma, Arial, Helvetica; }
+
+	a.menu:link{ color: #FFFFFF; TEXT-DECORATION: underline; font-family: Tahoma, Arial, Helvetica; }
+	a.menu:visited{ color: #FFFFFF; TEXT-DECORATION: underline; font-family: Tahoma, Arial, Helvetica; }
+	a.menu:active{ color: #FFFFFF; TEXT-DECORATION: underline; font-family: Tahoma, Arial, Helvetica; }
+	a.menu:hover{ color: #343434; TEXT-DECORATION: none; font-family: Tahoma, Arial, Helvetica; }

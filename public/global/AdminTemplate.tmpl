@@ -1,0 +1,46 @@
+<!-- coding 2007 Shireman Software Solutions (www.shireman.net) -->
+<html>
+<head>
+<title><tmpl_var name='title'></title>
+
+<link rel='stylesheet' type='text/css' href="<tmpl_var name='SITE_URL'>/global/admin-styles.css">
+</head>
+<body bgcolor="#cfcfcf" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+<table width="100%" border="0" cellspacing="7" cellpadding="0">
+  <tmpl_if name='title'>
+  <tr>
+    <td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td bgcolor="#000000">
+		<table width="100%" border="0" cellspacing="1" cellpadding="4">
+		  <tr>
+			<td class="title" bgcolor="#FFFFFF"><tmpl_var name='title'></td>
+		  </tr>
+		</table>
+		</td>
+	  </tr>
+	</table>
+	</td>
+  </tr>
+  </tmpl_if>
+  <tr>
+    <td width="100%" valign="top">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+		<td bgcolor="#000000">
+		<table width="100%" border="0" cellspacing="1" cellpadding="4">
+		  <tr>
+		  <td bgcolor="#FFFFFF">
+		    <tmpl_var name='content'>
+		  </td>
+		  </tr>
+		</table>
+		</td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

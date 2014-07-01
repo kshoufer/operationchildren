@@ -1,0 +1,43 @@
+<html>
+<head><title>Menu Navigation</title>
+
+<link rel='stylesheet' type='text/css' href='<tmpl_var name='SITE_URL'>global/styles.css'>
+
+</head>
+
+
+<body bgcolor="#455C71">
+
+<div align=center>
+<tmpl_if name='IsAdministrator'>
+<div class="menu_title">
+Manage Files<BR></div>
+<LI><a class="menu" href='Files/index.php' target="main">View All Files</a></LI>
+<div class="menu_title">
+Manage Users<BR></div>
+<LI><a class="menu" href='Users/index.php' target="main">View All Users</a></LI>
+</tmpl_if>
+
+<P>
+
+<div align=center>
+
+[<a class="menu" href='logout.php' target="_top">Logout</a>]
+
+
+<font size=1>
+
+
+<HR>
+
+Having trouble? Email<BR>
+<a class="menu" href="mailto:chris@verticalpenguin.com?subject=Simply CMS">chris@verticalpenguin.com</a>
+<P>
+<a class="menu" href="index.php" target="_top">RELOAD MANAGER</a>
+
+<P>
+
+</div>
+
+</body>
+</html>

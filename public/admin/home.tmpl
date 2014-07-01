@@ -1,0 +1,21 @@
+
+<html>
+<head>
+
+<title><tmpl_var name='SYSTEM_NAME'></title>
+
+</head>
+
+
+
+<frameset cols=178,*  FRAMEBORDER="0" BORDER="0">
+<frame name="menu" src="topnav.php">
+<tmpl_if name='IsAdministrator'>
+<frame name="main" src="Files/index.php"  marginwidth="10" marginheight="10">
+<tmpl_else>
+<frame name="main" src="Merchants/index.php"  marginwidth="10" marginheight="10">
+</tmpl_if>
+</frameset>
+
+
+</html>

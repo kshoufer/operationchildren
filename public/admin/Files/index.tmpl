@@ -1,0 +1,32 @@
+<form action="index.php" method="GET">
+<table border="0" cellspacing="0" cellpadding="3"  width="100%">
+  <tr>
+    <td style="background-color: #EEEEEE; border:1px solid #999999;" colspan="2">Add File: <input type="text" name="NewFilename"><input type="submit" name="AddNewFile" value="Add File"></td>
+  </tr>
+  <tmpl_if name='HasFiles'>      
+  <tr>
+    <td colspan="2" style="padding: 0px 0px 0px 0px;">
+      <table border="0" cellspacing="0" cellpadding="3" width="100%">
+        <tr>
+          <td nowrap style="border-bottom: solid #cccccc; border-width: 1px;" width="100%"><b>Filename</b></td>                  
+          <td nowrap style="border-bottom: solid #cccccc; border-width: 1px;" nowrap><b>Functions</b></td>
+        </tr>
+        <tmpl_loop name='Files'>
+          <tr>
+          <td valign="top" nowrap style="border-bottom: solid #cccccc; border-width: 1px;"><a href="EditFile.php?Filename=<tmpl_var name='Path'>"><B><tmpl_var name='Name'></B></a></td>
+
+          <td valign="top" nowrap style="border-bottom: solid #cccccc; border-width: 1px;"><a href="<tmpl_var name='global.SITE_URL'>/<tmpl_var name='Name'>" target="_blank">View</a> | <a href="index.php?delete=<tmpl_var name='Path'>">Delete</a></td>          
+          </tr>
+        </tmpl_loop>
+      </table>
+    </td>
+  </tr>
+      <tmpl_else>
+        <tr>
+          <td align="center" colspan="7">
+            <B>No Files</B>
+          </td>
+        </tr>
+      </tmpl_if>
+</table>
+</form>

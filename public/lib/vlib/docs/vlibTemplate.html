@@ -1,0 +1,2507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>vlibTemplate</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<LINK href="vlibdoc_files/doc.css" type=text/css rel=stylesheet>
+<SCRIPT language=JavaScript src="vlibdoc_files/doc.js"></SCRIPT>
+<META name=GENERATOR content="ConText 0.97">
+<style type="text/css">
+<!--
+.toc-itemnouner { FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial, Helvetica}
+-->
+</style>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<span class="toc-itemnouner"></span>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#d2d2d2 border=0>
+  <TBODY>
+  <TR>
+    <TD height=25 width="27%">&nbsp;<span class=docTitle>vlibTemplate Documentation</span></TD>
+    <TD height=25 width="68%" align="right"><a href="./index.html" class=toc-item>Back
+      To Index</a></TD>
+    <TD align=right width="5%"> &nbsp; &nbsp; <A href="javascript:print();" onMouseOver="status='Print page'; return true"  onMouseOut="status=''; return true">
+      <IMG height=16 alt="print page" src="vlibdoc_files/printer.gif" width=16
+      border=0></A>&nbsp; &nbsp; </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+<BLOCKQUOTE><A name=top></A>
+  <!--END-COMMON-HEAD-->
+  <UL>
+    <LI><A class=toc-item
+    href="#NAME">NAME</A>
+    <LI><A class=toc-item
+    href="#SYNOPSIS">SYNOPSIS</A>
+    <LI><A class=toc-item
+    href="#DESCRIPTION">DESCRIPTION</A>
+    <LI><A class=toc-item
+    href="#MOTIVATION">MOTIVATION</A>
+    <LI><A class=toc-item
+    href="#sec_tags">The Tags</A>
+      <UL>
+        <LI><A class=toc-item
+      href="#tag_tmpl_var">&lt;TMPL_VAR NAME="PARAMETER_NAME"&gt;</A>
+        <LI><A class=toc-item
+      href="#tag_tmpl_loop">&lt;TMPL_LOOP NAME="LOOP_NAME"&gt; &lt;/TMPL_[END]LOOP&gt;</A>
+        <LI><A class=toc-item
+      href="#tag_tmpl_include">&lt;TMPL_INCLUDE NAME="filename.html"&gt;</A> <br>
+        <LI><a class=toc-item
+      href="#tag_tmpl_phpinclude">&lt;TMPL_PHPINCLUDE NAME="filename.html"&gt;</a>
+          <br>
+        <LI><A class=toc-item
+      href="#tag_tmpl_if">&lt;TMPL_[ELSE]IF NAME="CONTROL_PARAMETER_NAME"&gt;
+          &lt;/TMPL_[END]IF&gt;</A>
+        <LI><A class=toc-item
+      href="#tag_tmpl_else">&lt;TMPL_ELSE&gt;</A>
+        <LI><A class=toc-item
+      href="#tag_tmpl_unless">&lt;TMPL_UNLESS NAME="CONTROL_PARAMETER_NAME"&gt;
+          &lt;/TMPL_[END]UNLESS&gt;</A> </LI>
+      </UL>
+    <LI><A class=toc-item
+    href="#sec_vlibtemplate">vlibTemplate</A>
+      <UL>
+        <LI><a href="#func_vlibtemplate" class="toc-item">vlibTemplate() </a>
+        <LI><a href="#func_newtemplate" class="toc-item">newTemplate() </a>
+        <LI><a href="#func_setvar" class="toc-item">setVar() </a>
+        <LI><a href="#func_unsetvar" class="toc-item">unsetVar() </a>
+        <LI><a href="#func_getvars" class="toc-item">getVars() </a>
+        <LI><a href="#func_getvar" class="toc-item">getVar()</a>
+        <LI><a href="#func_setcontextvars" class="toc-item">setContextVars()</a>
+        <LI><a href="#func_setloop" class="toc-item">setLoop() </a>
+        <LI><a href="#func_newloop" class="toc-item">newLoop() </a>
+        <LI><a href="#func_addrow" class="toc-item">addRow() </a>
+        <LI><a href="#func_addloop" class="toc-item">addLoop() </a>
+        <LI><a href="#func_unsetloop" class="toc-item">unsetLoop() </a>
+        <LI><a href="#func_reset" class="toc-item">reset() </a>
+        <LI><a href="#func_clearvars" class="toc-item">clearVars() </a>
+        <LI><a href="#func_clearloops" class="toc-item">clearLoops() </a>
+        <LI><a href="#func_clearall" class="toc-item">clearAll() </a>
+        <LI><a href="#func_unknownsexist" class="toc-item">unknownsExist() </a>
+        <LI><a href="#func_unknowns" class="toc-item">unknowns() </a>
+        <LI><a href="#func_getunknowns" class="toc-item">getUnknowns() </a>
+        <LI><a href="#func_setunknowns" class="toc-item">setUnknowns() </a>
+        <LI><a href="#func_setpath" class="toc-item">setPath() </a>
+        <LI><a href="#func_getparsetime" class="toc-item">getParseTime() </a>
+        <LI><a href="#func_fastprint" class="toc-item">fastPrint() </a>
+        <LI><a href="#func_pparse" class="toc-item">pparse() </a>
+        <LI><a href="#func_pprint" class="toc-item">pprint() </a>
+        <LI><a href="#func_grab" class="toc-item">grab() </a><br>
+      </UL>
+    <li><a class=toc-item
+    href="#sec_vlibtemplatedebug">vlibTemplateDebug</a>
+    <li><a class=toc-item
+    href="#sec_vlibtemplatecache">vlibTemplateCache</a>
+      <ul>
+        <li><a href="#func_clearcache" class="toc-item">clearCache() </a>
+        <li><a href="#func_recache" class="toc-item">recache() </a>
+        <li><a href="#func_setcachelifetime" class="toc-item">setCacheLifeTime()
+          </a>
+        <li><a href="#func_setcacheextension" class="toc-item">setCacheExtension()</a>
+      </ul>
+    <li><a class=toc-item
+    href="#options">Options</a>
+    <li><a class=toc-item
+    href="#sec_security">SECURITY</a>
+    <li><a class=toc-item
+    href="#sec_bugs">BUGS</a>
+    <li><a class=toc-item
+    href="#sec_credits">CREDITS</a>
+    <li><a class=toc-item
+    href="#sec_author">AUTHOR</a>
+    <li><a class=toc-item
+    href="#sec_download">DOWNLOAD</a>
+    <li><a class=toc-item
+    href="#sec_license">LICENSE</a>
+    <li><a class=toc-item
+    href="#sec_install">INSTALL</a>
+    <li><a class=toc-item
+    href="#sec_forum">FORUM</a>
+    <li><a class=toc-item
+    href="#sec_docs_in_other_langs">DOCUMENTATION IN OTHER LANUAGES</a>
+  </UL>
+  <HR noShade SIZE=1>
+  <H1><A name=NAME>NAME</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibTemplate - php class enabling you to split PHP code from html. package:
+    vLIB <br>
+    <br>
+  </P>
+  <H1><A name=SYNOPSIS>SYNOPSIS</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>First of all you make a Template file. This is a normal HTML file with extra
+    vlibTemplate markup tags.</P>
+  <P>For example, food.htm:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0 height="110">
+    <TBODY>
+    <TR>
+      <TD align=middle height="106">
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD height="125">
+              <PRE>  &lt;HTML&gt;
+  &lt;HEAD&gt;&lt;TITLE&gt;My Favourite Food&lt;/TITLE&gt;
+  &lt;BODY&gt;
+  My favourite dish is &lt;TMPL_VAR NAME=&quot;FAV1&quot;&gt;,
+  but I also like &lt;TMPL_VAR NAME=&quot;FAV2&quot;&gt;.
+  &lt;/BODY&gt;
+  &lt;/HTML&gt;
+</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>And now create this php script:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD height="183">
+              <PRE>  // include the vlibTemplate class<br>  include('vLIB/vlibTemplate.php');<br>
+  // make $tmpl an object of vlibTemplate
+  $tmpl = new vlibTemplate('food.htm');<br>
+  // set the variables
+  $tmpl-&gt;setVar('FAV1', 'Fish and Chips');<br>  $tmpl-&gt;setVar('FAV2', 'fajitas');
+
+  // print the template
+  $tmpl-&gt;pparse();</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p>If everything goes well you should see the following in your browser:</P>
+  <P>My favourite dish is Fish and Chips, but I also like fajitas.</P>
+  <H1><br>
+    <A name=DESCRIPTION>DESCRIPTION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibTemplate is a php class that is intended to make splitting PHP from HTML
+    a simple and natural task. <br>
+    It makes use of the following vlibTemplate markup tags (like html tags) ; <b>&lt;tmpl_var&gt;,
+    &lt;tmpl_loop&gt;, &lt;tmpl_include&gt;, &lt;tmpl_phpinclude&gt;, &lt;tmpl_comment&gt;,
+    &lt;tmpl_if&gt;, &lt;tmpl_elseif&gt;, &lt;tmpl_else&gt;, &lt;tmpl_unless&gt;,
+    <br>
+    &lt;tmpl_endloop&gt;, &lt;tmpl_endcomment&gt;, &lt;tmpl_endif&gt; and &lt;tmpl_endunless&gt;</b>.
+    <br>
+    The file written with these style tags is called a template. A template can
+    be an HTML file to use on the web, or perhaps a text file to use as an e-mail
+    template... as you can guess there are many many possibilities. <br>
+    The template file is always seperate from the php script that uses it, that
+    way, a designer for example can change the template file without having to
+    go through all of the php coding, <br>
+    thus saving the developer having to worry about it.<br>
+    Using this class you set the values for the variables, loops, if statements
+    ..etc which are declared in the template. This enables you to seperate all
+    of the design from the data, which you create using PHP.</P>
+  <P>vlibTemplate has three user accessible classes. <a href="#sec_vlibtemplate" class="toc-item">vlibTemplate</a>,
+    <a href="#sec_vlibtemplatedebug" class="toc-item">vlibTemplateDebug</a> and <a href="#sec_vlibtemplatecache" class="toc-item">vlibTemplateCache</a>.
+    vlibTemplate is the main class which handles all of the passing and has the majority
+    of the functions. vlibTemplateDebug and vlibTemplateCache both extend vlibTemplate
+    and inherit it's functionality.<br>
+    You can therefore change the functionality of vlibTemplate just by appending
+    Debug or Cache.<br>
+    The debug class requires no parametres to be set, it prints out the vlibTemplate
+    debug module with debug data for the current page. The cache class has a few
+    extra functions that are utilisable, the class saves the parsed file into
+    the filesystem to allow much faster page accesses and a faster site.<br>
+    All are described in the following sections.<br>
+    <br>
+  </P>
+  <H1><A name=MOTIVATION>MOTIVATION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>Whilst there are quite a few php template classes out there, few of them
+    support the basic features that are needed to develop full scale applications,
+    like if constructs, loops (known as blocks in other template classes) and
+    the ability to include other template files using a simple html-esque tag.<br>
+  </P>
+  <P>Any template classes that I've come across have been either lacking in features,
+    or if they did have the features worth using, the syntax was too complicated
+    and not intuitive enough.<br>
+  </P>
+  <P>This is why vlibTemplate came into being, and why it's more usable than any
+    template system already out there. It has all of the features that you'll
+    need to efficiently seperate your php and html (or whatever else), and it
+    does it in an intuitive manner. It's also extremely quick, as it compiles
+    the template into native php code using using just one pcre call.<br>
+    <br>
+  </P>
+  <H1><A name=sec_tags>The Tags</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>Note: even though these tags look like HTML they are a little different as
+    they're allowed to "break the rules". Something like:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   &lt;IMG SRC="&lt;TMPL_VAR NAME=IMAGE_SRC&gt;"&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>is not really valid HTML, but it is a perfectly valid use and will work as
+    planned.</P>
+  <P>The "NAME=" in the tag is optional, although for extensibility's sake I recommend
+    using it. Example - "&lt;TMPL_LOOP LOOP_NAME&gt;" is acceptable.</P>
+  <P>If you're a fanatic about valid HTML and would like your templates to conform
+    to valid HTML syntax, you may optionally type template tags in the form of
+    HTML comments. This may be of use to HTML authors who would like to validate
+    their templates' HTML syntax prior to HTML::Template processing, or who use
+    DTD-savvy editing tools.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  &lt;!-- TMPL_VAR NAME=PARAM1 --&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>You can also use a curly bracket syntax '{tmpl_var}' for use within comments
+    (as to not break them with the comment style tag), or within html tags (as
+    to not break the tag in your editor).</P>
+  <p>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  {TMPL_VAR NAME=PARAM1}</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>&nbsp;</P>
+  <H2><A name=tag_tmpl_var>&lt;TMPL_VAR NAME="PARAMETER_NAME"&gt;</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>The &lt;TMPL_VAR&gt; tag is very simple. For each &lt;TMPL_VAR&gt; tag in
+    the template you call $tmpl-&gt;setvar('PARAMETER_NAME', "VALUE"). </P>
+  <P>When the template is output the &lt;TMPL_VAR&gt; is replaced with the VALUE
+    text you specified.</P>
+  <P>Optionally there are 2 more attributes that you can add to this tag:</P>
+  <P> 1) Escape .. value may be:</P>
+  <blockquote>
+    <p>i) html -&gt; html escapes the variable, i.e. exchanging '&lt;' with '&amp;lt;'
+      , '&gt;' with '&amp;gt;' and '&amp;' with '&amp;amp;'.</p>
+    <p>ii) url -&gt; url escpaes the string, i.e. exchanging ' ' with '+' and
+      '/' with '%2F.</p>
+    <p>iii) sq -&gt; escapes single quotes within a string, i.e. &quot;I can't&quot;
+      becomes &quot;I can\'t&quot;.</p>
+    <p>iv) dq -&gt; escapes doubles quotes within a string, i.e. 'she said: &quot;Hello!&quot;.'
+      becomes 'she said: \&quot;Hello!\&quot;.'</p>
+    <p>v) none -&gt; turns off any escaping for this particular variable.</p>
+  </blockquote>
+  <p>2) Format .. value may be:</p>
+  <blockquote>
+    <p>i) strtoupper -&gt; transforms var to upper case.</p>
+    <p>ii) uc -&gt; same as strtoupper (upper case).</p>
+    <p>iii) strtolower -&gt; transforms var to lower case.</p>
+    <p>iv) lc -&gt; same as strtolower (lower case).</p>
+    <p>v) ucfirst -&gt; makes the first character of the var uppercase.</p>
+    <p>vi) lcucfirst -&gt; first transforms the var to lower case, then does a
+      ucfirst on it.</p>
+    <p>vii) ucwords -&gt; makes the first character of every word in the var upper
+      case.</p>
+    <p>viii) lcucwords -&gt; first transforms var to lower case, then does a ucwords
+      on it.</p>
+  </blockquote>
+  <P>Both of these tags may have extra elements added at any time. If in the future
+    you need something added, then send an email to <a href="mailto:vlib@activefish.com" class="toc-item">vlib@activefish.com</a>
+    and if we think it's feasable, we'll add it.</P>
+  <P>Here's an example of a complete tag:</P>
+  <P>
+  <table cellspacing=0 cellpadding=1 width="90%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   My e-mail is: &lt;TMPL_VAR NAME='email' escape='html' format='lc'&gt;.</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></P>
+  <p><br>
+  </P>
+  <H2><A name=tag_tmpl_loop>&lt;TMPL_LOOP NAME="LOOP_NAME"&gt; &lt;/TMPL_[END]LOOP&gt;</A>&nbsp;
+    <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P><i>There are 2 ways of assigning a vlibTemplate loop in PHP. The first way
+    is the most complicated using the function<br>
+    <a href="#func_setloop" class="toc-itemnouner">setLoop()</a>. <br>
+    This will be described first, and then the more recent method, the 3 stage
+    method.<br>
+    Both methods use 'exactly' the same template tags. They're just programmed
+    differently in PHP.</i><br>
+    <br>
+    The &lt;TMPL_LOOP&gt; tag is a bit more complicated. The &lt;TMPL_LOOP&gt;
+    tag allows you to delimit a section of text and give it a name. Inside the
+    &lt;TMPL_LOOP&gt; you place &lt;TMPL_VAR&gt;s. <br>
+    Now you pass an array to setLoop() with a list of variable assignments. <br>
+    The loop iterates over this list and produces output from the text block for
+    each pass. Here's an example:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="90%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   In the template:
+
+   &lt;TMPL_LOOP NAME='EMPLOYEE_INFO'&gt;
+         Name: &lt;TMPL_VAR NAME='NAME'&gt;
+         Job: &lt;TMPL_VAR NAME='JOB'&gt;<br>   &lt;/TMPL_LOOP&gt;
+
+   In the script:
+<br>   $employee_array = array();
+   array_push ($employee_arr, array('NAME' =&gt; 'Sam', 'JOB' =&gt; 'programmer' ));
+   array_push ($employee_arr, array('NAME' =&gt; 'Steve', 'JOB' =&gt; 'designer' ));
+
+   $tmpl-&gt;setLoop('EMPLOYEE_INFO', $employee_array);
+   $tmpl-&gt;pparse();
+
+   The output:
+
+   Name: Sam <br>   Job: programmer <br>   Name: Steve
+   Job: soda jerk </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>As you can see above the &lt;TMPL_LOOP&gt; takes a list of variable assignments
+    and then iterates over the loop body producing output.</P>
+  <P>Often you'll want to generate a &lt;TMPL_LOOP&gt;'s contents programmatically.
+    Here's an example of how this can be done (many other ways are possible!):</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="90%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   // a couple of arrays of data to put in a loop:
+   $words = array('I', 'Am', 'Cool');
+   $numbers = array(1, 2, 3);
+
+
+   $loop_data = array();  // initialize an array to hold your loop
+
+   for ($i=0; $i < count($words); $i++) {
+     array_push($loop_data, array('
+                                 'WORD' => $words[$i],
+                                 'NUMBER' => $numbers[$i]
+                                ));
+   }
+
+   // finally, assign the loop data to the loop variable
+   $template-&gt;setLoop('THIS_LOOP', $loop_data);  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>The above example would work with a template like:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="90%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   &lt;TMPL_LOOP NAME="THIS_LOOP"&gt;
+      Word: &lt;TMPL_VAR NAME="WORD"&gt;&lt;BR&gt;
+      Number: &lt;TMPL_VAR NAME="NUMBER"&gt;&lt;BR&gt;
+   &lt;/TMPL_LOOP&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>It would produce output like:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="91%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   Word: I
+   Number: 1
+
+   Word: Am
+   Number: 2
+
+   Word: Cool
+   Number: 3  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>&lt;TMPL_LOOP&gt;s within &lt;TMPL_LOOP&gt;s are fine and work as you would
+    expect. If the syntax for the setLoop() call has you stumped, here's an example
+    of a setLoop() call with one nested loop:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>
+  $template-&gt;setLoop('OUTER',array(
+            0 => array(
+                'name' = 'Steve',
+                'surname' => 'Owen'
+                'owns' => array(
+                            0 => array(
+                                    'est' => 'E20'),
+                            1 => array(
+                                    'est' => 'Flat 42B')
+                            ),
+            1 => array(
+                'name' = 'Phil',
+                'surname' => 'Mitchel'
+                'owns' => array(
+                            0 => array(
+                                    'est' => 'The Vic'),
+                                            1 => array(
+                                    'est' => 'The Arches'),
+                            2 => array(
+                                    'est' => 'Snooker Club')
+                            )
+                 );
+</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <p>Basically, the loop must consist of an array where each array row represents
+    a row of a loop. Therefore the values of each array must be an associative
+    array of.. $variable_name =&gt; $variable_value.<br>
+    If you build an inner loop, the $variable_name becomes the name of the loop,
+    and you start again with the same structure.</p>
+  <p>NB: There is no limit to the amount of nested loops. Be aware that many loops
+    (as in any php code), may slow<br>
+    down performance.</p>
+  <P>Inside a &lt;TMPL_LOOP&gt;, the only variables available are those defined
+    within the setLoop() call. There are however work arounds to getting variables
+    outside of the scope of the current loop.<br>
+    If you wish to access a variable in a parent loop, you can prepend the variable
+    name with the name of the loop, i.e.:<br>
+  </P>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  &lt;TMPL_LOOP name=&quot;outer&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;TMPL_VAR name=&quot;__ROWNUM__&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;TMPL_LOOP name=&quot;inner&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inner loop row number is: &lt;TMPL_VAR name=&quot;__ROWNUM__&quot;&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the outer loop row number is: &lt;TMPL_VAR name=&quot;outer.__ROWNUM__&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/TMPL_LOOP&gt;<br>&nbsp;&nbsp;&lt;/TMPL_LOOP&gt;</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>To access the variables within the global namespace, you can either set the
+    <a href="#options" class="toc-item">OPTION</a> 'GLOBAL_VARS' to 1, or you
+    can use the above syntax but use the vlibTemplate reserved word 'global' (always
+    lowercase) like &lt;TMPL_VAR name=&quot;global.TITLE&quot;&gt;.</P>
+  <P>NB: '__ROWNUM__' is one of many vlibTemplate variables which is set when the
+    <a href="#options" class="toc-item">OPTION</a> 'LOOP_CONTEXT_VARS' is set
+    to 1. See the <a href="#options" class="toc-item">OPTIONS</a> section to see
+    other variable and their meanings.</P>
+  <hr size="1">
+  <P>Another method to add loops is the 3 stage method, a later addition to the 
+    class, using <a href="#func_newloop"><span class="toc-itemnouner">newLoop()</span></a>, 
+    <span class="toc-itemnouner"><a href="#func_addrow" class="toc-itemnouner">addRow()</a></span> 
+    and<br>
+    <span class="toc-itemnouner"><a href="#func_addloop" class="toc-itemnouner">addLoop()</a></span>
+    functions.<br>
+    It uses the same template as before but the PHP side is much more simple.<br>
+    <br>
+  </P>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>
+&lt;?php<br>&nbsp;&nbsp;&nbsp;&nbsp;[assign template .......]<br><br>   // a couple of arrays of data to put in a loop:
+   $words = array('I', 'Am', 'Cool');
+   $numbers = array(1, 2, 3);
+
+
+   $tmpl-&gt;newLoop('THIS_LOOP');  // initialize a new loop
+
+   for ($i=0; $i < count($words); $i++) {
+     $tmpl-&gt;addRow(array('WORD' => $words[$i],'NUMBER' => $numbers[$i])); //adds a row
+   }
+&nbsp;&nbsp;&nbsp;$tmpl-&gt;addLoop(); // adds the loop to the template<br><br>&nbsp;&nbsp;&nbsp;&nbsp;[parse template .....]<br>?&gt;</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>To see a working example have a look at the 'vlibTemplate_basicloop.php'
+    examples in the <b><a href="../examples" target="_blank"><span class="toc-itemnouner">EXAMPLES</span></a></b>
+    folder.<br>
+    <br>
+  </P>
+  <H2><A name=tag_tmpl_include>&lt;TMPL_INCLUDE NAME/FILE="filename.html"&gt;</A>&nbsp;
+    <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>This tag includes a template directly into the current template at the point
+    where the tag is found. The included template contents are used exactly as
+    if its contents were physically included in the master template.<br>
+    (it acts more as a php-style require than an include)<br>
+  </P>
+  <P>The file specified can be a full path - beginning with a '/'. If it isn't
+    a full path, the path to the enclosing file is tried first. After that each
+    of the 'additional' paths set in <a href="#options" class="toc-item">OPTIONS</a>
+    are tried. After that the <a href="#options" class="toc-item">OPTION</a> 'TEMPLATE_DIR'
+    is tried next, if it exists. Next, the relative path from the php script is
+    consulted. As a final attempt, vlibTemplate tries from the directory where vlibTemplate
+    is installed.</P>
+  <P>As a protection against infinitly recursive includes, an arbitary limit of
+    10 levels deep is imposed. You can alter this limit with the "MAX_INCLUDES"
+    <a href="#options" class="toc-item">OPTION</a>. See the entry for this option
+    below for more details.<br>
+    <br>
+    <br>
+  </P>
+  <h2><a name=tag_tmpl_phpinclude>&lt;TMPL_PHPINCLUDE NAME/FILE="filename.php"&gt;</a>&nbsp;
+    <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  <p>It is encouraged that you use this tag only in circumstances that you need
+    to. It will basically execute the php code inside of the template file as
+    if it were executed within the actual vlibTemplate class.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>&lt;?php<br>&nbsp;&nbsp;echo $GLOBALS['PHP_SELF'];<br>?&gt; </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>NB: The use of this tag is strongly discouraged as it goes against the reasons
+    for using a template system. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The only reason it is here is because
+    I thought it would be asked for.<br>
+  </P>
+  <H2><A
+  name=tag_tmpl_if>&lt;TMPL_[ELSE]IF NAME="CONTROL_PARAMETER_NAME"&gt; &lt;/TMPL_[END]IF&gt;</A>&nbsp;
+    <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>The &lt;TMPL_IF&gt; tag allows you to include or not include a block of the
+    template based on the value of a given parameter name. If the parameter is
+    given a value that is equal to TRUE for PHP - like '1' - then the block is
+    included in the output. If it is not defined, or given a false value - like
+    '0' - then it is skipped. The parameters are specified the same way as with
+    TMPL_VAR.</P>
+  <P>Example Template:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="93%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   &lt;TMPL_IF NAME="BOOL"&gt;
+     Some text that only gets displayed if BOOL is true!
+   &lt;/TMPL_IF&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>Now if you call $template-&gt;setVar('BOOL', 1) then the above block will
+    be included in the output. </P>
+  <P>&lt;TMPL_IF&gt;[&lt;TMPL_ELSEIF&gt;] &lt;/TMPL_[END]IF&gt; blocks can include
+    any valid HTML::Template construct - VARs and LOOPs and other IF/ELSE blocks.
+    Note, however, that intersecting a &lt;TMPL_IF&gt; and a &lt;TMPL_LOOP&gt;
+    is invalid.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="93%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   Not going to work:
+   &lt;TMPL_IF BOOL&gt;
+      &lt;TMPL_LOOP SOME_LOOP&gt;
+   &lt;/TMPL_IF&gt;
+      &lt;/TMPL_LOOP&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <p><br>
+    Loops are kept in a different namespace to global variables. So if you want
+    to access loop names from your if statements you must have the <a href="#options" class="toc-item">OPTION</a>
+    'SET_LOOP_VAR' set to 1. This will ensure that when you set a loop that is
+    not empty using setLoop(), a variable with that loop name is set using setVar().<br>
+    This is true except when using &lt;TMPL_IF&gt; from within a loop where this
+    is not a problem.</P>
+  <p></P>
+  <P>If the name of a TMPL_LOOP is used in a TMPL_IF, the IF block will output
+    if the loop has at least one row. Example:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  &lt;TMPL_IF LOOP_ONE&gt;
+    This will output if the loop is not empty.
+  &lt;/TMPL_IF&gt;
+
+  &lt;TMPL_LOOP LOOP_ONE&gt;
+    ....
+  &lt;/TMPL_LOOP&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>WARNING: Much of the benefit of vlibTemplate is in decoupling your PHP and HTML.
+    If you introduce numerous cases where you have TMPL_IFs and matching PHP if()s,
+    you will create a maintenance problem in keeping the two synchronized. I suggest
+    you adopt the practice of only using TMPL_IF if you can do so without requiring
+    a matching if() in your PHP code.<br>
+    Of course, this isn't always possible, it's just something that you should
+    aim for.</P>
+  <H2><A name=tag_tmpl_else>&lt;TMPL_ELSE&gt;</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>You can include an alternate block in your TMPL_IF block by using TMPL_ELSE.
+    NOTE: You still end the block with &lt;/TMPL_IF&gt;, not &lt;/TMPL_ELSE&gt;!
+    Example:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   &lt;TMPL_IF BOOL&gt;
+     Some text that is included only if BOOL is true
+   &lt;TMPL_ELSE&gt;
+     Some text that is included only if BOOL is false
+   &lt;/TMPL_IF&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <H2><A
+  name=tag_tmpl_unless>&lt;TMPL_UNLESS NAME="CONTROL_PARAMETER_NAME"&gt; &lt;/TMPL_[END]UNLESS&gt;</A>&nbsp;
+    <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>This tag is the opposite of &lt;TMPL_IF&gt;. The block is output if the CONTROL_PARAMETER
+    is set to false or not defined. You can use &lt;TMPL_ELSE&gt; and &lt;TMPL_ELSEIF&gt;
+    with &lt;TMPL_UNLESS&gt; just as you can with &lt;TMPL_IF&gt;, however there
+    is no &lt;TMPL_ELSEUNLESS&gt; tag.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  Example:
+
+  &lt;TMPL_UNLESS BOOL&gt;
+    Some text that is output only if BOOL is FALSE.
+  &lt;TMPL_ELSE&gt;
+    Some text that is output only if BOOL is TRUE.
+  &lt;/TMPL_UNLESS&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>If the name of a TMPL_LOOP is used in a TMPL_UNLESS, the UNLESS block is
+    output if the loop has zero rows. Please see the <a href="#options" class="toc-item">OPTION</a>
+    section regarding &lt;TMPL_IF/UNLESS&gt; statements within loops.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  &lt;TMPL_UNLESS LOOP_ONE&gt;
+    This will output if the loop is empty.
+  &lt;/TMPL_UNLESS&gt;
+
+  &lt;TMPL_LOOP LOOP_ONE&gt;
+    ....
+  &lt;/TMPL_LOOP&gt;  </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <H1>&nbsp;</H1>
+  <H1><A name=sec_vlibtemplate>vlibTemplate</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A><br>
+    <br>
+  </H1>
+  <H2><A name=func_vlibtemplate>vlibTemplate()</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>Called upon instantiation of the class, this sets the template filename and
+    any options defined:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  vlibTemplate (string Filename [, array Options])</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>You must define a filename when instantiating the vlibTemplate object, and it
+    must be here that you define any template specfic <a href="#options" class="toc-item">OPTION</a>
+    parameters:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  $options = array('STRICT' =&gt; 1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'CASELESS' =&gt; 1);<br>&nbsp;&nbsp;$tmpl = new vlibTemplate('./templates/default.html', $options);</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p>When including your template, vlibTemplate will use the same include mechanisms
+    used with the <a href="#tag_tmpl_include" class="toc-item">&lt;TMPL_INCLUDE&gt;</a>
+    tag.<br>
+    <br>
+    NB: Look at the <a href="#options" class="toc-item">OPTION</a> section to
+    see in what ways you can manipulate vlibTemplate to work exactly as you need
+    it.<br>
+    <br>
+    <br>
+  </P>
+  <h2><a name=func_newtemplate>newTemplate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  newTemplate (string Filename)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p> <br>
+    This is actually the function called by<a href="#func_vlibtemplate" class="toc-item">
+    vlibTemplate()</a> upon instantiation of the class.<br>
+    It will probably become useful to you only if you use the <a href="#func_reset" class="toc-item">reset()</a>
+    function.</p>
+  <p> NB: This function takes a filename as the only parameter. The <a href="#options" class="toc-item">OPTIONS</a>
+    are always set by (and only by) <a href="#func_vlibtemplate" class="toc-item">vlibTemplate()</a>.<br>
+    <br>
+    <br>
+  </P>
+  <H2><A name=func_setvar>setVar()</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A><br>
+  </H2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setVar(mixed name [, mixed value])  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>setVar() can be called in two different ways</P>
+  <P>1) The most commonly used method, passing in a name and a value: </P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="93%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   $tmpl-&gt;setVar('title', 'vlibTemplate test page'); // title is the name used in &lt;TMPL_VAR&gt;
+     </PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>2) Passing in an array of key=&gt;value pairs, each element taken as a seperate
+    var: </P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="93%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   $myvars = array('fav_color' =&gt; 'blue',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'fav_tvshow'=&gt; 'Eastenders');<br><br>   $tmpl-&gt;setVar($myvars);  // no second parameter</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P><br>
+  </P>
+  <h2><a name=func_unsetvar>unsetVar()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setVar(string name [, string name...])  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>unsetVar() unsets each variable passed to it as a seperate parameter.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $tmpl-&gt;unsetVar('title', 'fav_color', 'fav_tvshow');
+     </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_getvars>getVars()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  getVars()  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>getVars() returns an associative array of all variables in vlibTemplate.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $allvars = $tmpl-&gt;getVars();
+   print_r($allvars);  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <p></p>
+  <h2><a name=func_getvar>getVar()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  getVar(string name)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>getVar() returns the value of the variable 'name'.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $fav_color = $tmpl-&gt;getVar('fav_color');
+</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_setcontextvars>setContextVars()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setContextVars()  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>setContextVars() is invoked when the <a href="#options" class="toc-item">OPTION</a>
+    'GLOBAL_CONTEXT_VARS' is set, this is another way to invoke it yourself.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $tmpl-&gt;setContextVars();
+</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <h2><br>
+    <br>
+    <a name=func_setloop>setLoop()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setLoop(string loopname, array loop_rows)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>setLoop() builds an array for using with &lt;TMPL_LOOP&gt;.</p>
+  <p>Please see the <a href="#tag_tmpl_loop" class="toc-item">&lt;TMPL_LOOP&gt;</a>
+    section for information on how to build a loop.</p>
+  <h2><br>
+    <a name=func_newloop>newLoop()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  newLoop(string loopname)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>newLoop() is part of the 3 stage method to add a loop, used instead of the
+    complicated <a href="#func_setloop" class="toc-item">setLoop()</a> function.<br>
+    This function assigns a loop name, which you'll use in your templates.<br>
+    The following 2 functions will complete the 3 stage method, <a href="#func_addrow" class="toc-item">addRow()</a>
+    and <a href="#func_addloop" class="toc-item">addLoop()</a>.</p>
+  <p>Please see the <a href="#tag_tmpl_loop" class="toc-item">&lt;TMPL_LOOP&gt;</a>
+    section for information on how to build a loop.</p>
+  <p><br>
+  </p>
+  <h2><a name=func_addrow>addRow()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  addRow(array row)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>addRow() is the 2nd part of the 3 stage method to add a loop, used instead
+    of the complicated <a href="#func_setloop" class="toc-item">setLoop()</a>
+    function.<br>
+    This function assigns a row to the loop named by <a href="#func_newloop" class="toc-item">newLoop()</a>.<br>
+    The array must be a single dimensional array. If it has key associations the
+    those associations will be used as the<br>
+    variable names within the loop, other wise the variables will be called; _0,
+    _1, _2, _3 ...etc.<br>
+  </p>
+  <p>Please see the <a href="#tag_tmpl_loop" class="toc-item">&lt;TMPL_LOOP&gt;</a>
+    section for information on how to build a loop.</p>
+  <p>&nbsp; </p>
+  <h2><a name=func_addloop>addLoop()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  addLoop()  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>addLoop() is the 3rd part of the 3 stage method to add a loop, used instead
+    of the complicated <a href="#func_setloop" class="toc-item">setLoop()</a>
+    function.<br>
+    This function simply adds the entire loop into the array in the correct format.<br>
+    See the <a href="#func_newloop" class="toc-item">newLoop()</a> and <a href="#func_addrow" class="toc-item">addRow()</a>
+    functions. <br>
+  </p>
+  <p>Please see the <a href="#tag_tmpl_loop" class="toc-item">&lt;TMPL_LOOP&gt;</a>
+    section for information on how to build a loop.</p>
+  <p><br>
+  </p>
+  <h2><a name=func_unsetloop>unsetLoop()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  unsetLoop (string loopname [, string loopname...])    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>unsetLoop() unsets each 'TOP LEVEL' loop passed to it as a seperate parameter.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;unsetLoop('loop1','loop2');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>NB: This will NOT work on nested loops, only the top level ones.</p>
+  <p>&nbsp;</p>
+  <h2><a name=func_reset>reset()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  reset()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>reset() will reset vlibTemplate to it original state (except it keeps hold of
+    the <a href="#options" class="toc-item">OPTIONS</a>). After reset()ing vlibTemplate,
+    you must use the function newTemplate() to initialize a new template.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;reset();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_clearvars>clearVars()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  clearVars()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>clearVars() will remove all 'GLOBAL' variables from vlibTemplate (variables
+    set using <a href="#func_setvar" class="toc-item">setVar()</a>).</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;clearVars();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_clearloops>clearLoops()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  clearLoops()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>clearLoops() will remove all loops from vlibTemplate (variables set using <a href="#func_setloop" class="toc-item">setLoop()</a>).</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;clearLoops();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_clearall>clearAll()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  clearAll()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>clearAll() will remove all loops and variables from vlibTemplate (variables
+    set using <a href="#func_setloop" class="toc-item">setLoop()</a> and <a href="#func_setvar" class="toc-item">setVar()</a>).<br>
+    This is particularly useful if, for example, you're using vlibTemplate as an
+    e-mail template and sending it to many people. You will probably need different
+    information in each e-mail, and can therefore use clearAll() and then go about
+    re-entering all of the variables.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;clearAll();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_unknownsexist>unknownsExist()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  unknownsExist()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function returns true if, after parsing, variables have been found in
+    the template file that were not set using <a href="#func_setvar" class="toc-item">setVar()</a>.
+    This function may or may not have any effect depending on the <a href="#options" class="toc-item">OPTION</a>
+    setting of 'UNKNOWNS'.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  if($tmpl-&gt;unknownsExist()) { ...</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_unknowns>unknowns()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  unknowns()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function is an alias for <a href="#func_unknownsexist" class="toc-item">unknownsExist()</a>.</p>
+  <p>&nbsp;</p>
+  <h2><a name=func_getunknowns>getUnknowns()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  getUnknowns()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function returns an array of all unknowns found after parsing.</p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  print_r($tmpl-&gt;getUnknowns());</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_setunknowns>setUnknowns()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setUnknowns(string unknown)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function allows you to set the <a href="#options" class="toc-item">OPTION</a>
+    for 'UNKNOWNS'. See the <a href="#options" class="toc-item">OPTION</a> section
+    for more details.</p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;getUnknowns('comment');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <h2><br>
+    <a name=func_setpath>setPath()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setPath(string filepath[, string filepath...])    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function will give vlibTemplate a list of path to be used when trying to
+    access a template file or a file include <br>
+    using &lt;tmpl_include&gt;. <br>
+    You give it one argument for each path you want to set and it is set on a
+    per file basis.</p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;setPath('../templates', '/usr/local/apache/cgi-bin/mytemplates');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_getparsetime>getParseTime()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  getParseTime()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function will allow you to get the time it took, in seconds and microseconds,
+    for the template to be parsed.<br>
+    Therefore this function should only be used once one of the parsing functions
+    has been called (<a href="#func_fastprint" class="toc-item">fastPrint()</a>,
+    <br>
+    <a href="#func_pparse" class="toc-item">pparse()</a>, or <a href="#func_grab" class="toc-item">grab()</a>).
+    This function only works if the <a href="#options" class="toc-item">OPTION</a>
+    'TIME_PARSE' is set to 1.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;grab();<br>  echo $tmpl-&gt;getParseTime(); // will echo out the time it took to parse the template</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_fastprint>fastPrint()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18 width="18"></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  fastPrint()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function parses the template file and prints the output.<br>
+    It is similar to <a href="#func_pparse" class="toc-item">pparse()</a> however
+    it bypasses the output buffering, therefore theoretically saving time although
+    the overhead is an absolute mininum.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;fastPrint();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_pparse>pparse()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  pparse()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function parses the template file and prints the output.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;pparse();</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_pprint>pprint()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  pprint()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function is an alias for <a href="#func_pparse" class="toc-item">pparse()</a>.<br>
+  </p>
+  <p>&nbsp;</p>
+  <h2><a name=func_grab>grab()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  grab()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function parses the template file and returns the output instead of
+    printing it. Therefore you can do what you please with it.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $output = $tmpl-&gt;grab(); ...</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h1><a name=sec_vlibtemplatedebug>vlibTemplate</a>Debug&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h1>
+  <p>This class needs no configuring or any other knowledge. It simply prepends
+    the output of your template file with code to popup the vlibTemplate Debug Module.
+    This module shows a lot of extremely helpful information about the template
+    you parse.<br>
+    <br>
+    Possibly the most helpful feature of the module is the error checking. It
+    will basically parse through the entire template file that you're parsing,
+    and any included files, and check the &lt;tmpl_*&gt; style syntax for validity.
+    So if you receive vlibTemplate compile errors upon running your code through
+    your browser you can use this module to find out exactly where you went wrong.<br>
+  </p>
+  <p>NB: This module is HTML based and made to be used in a web browser and is
+    therefore a lot more difficult to use from the command line for example, although
+    it's still possible.<br>
+    <br>
+  </p>
+  <br>
+  <h1><a name=sec_vlibtemplatecache>vlibTemplateCache</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h1>
+  <p>This class is best used once you have created your template and are happy
+    with it. The class will basically save the compiled template code to a file
+    for subsequent accesses. This saves a lot of time skipping the entire compile
+    phase.<br>
+    If you then need to make a change to the template, you must clear the cache.</p>
+  <p>To access the vlibTemplate cache file you simply replace the <a href="#sec_vlibtemplate" class="toc-item">vlibTemplate()</a>
+    instantition with vlibTemplateCache.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl = new vlibTemplateCache('mytemplates/mytemplatefile.html', $options);</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+    vlibTemplateCache will recache itself if either the compiled file has been deleted,
+    the compiled file has passed the expiry<br>
+    date set by the <a href="#options" class="toc-item">OPTION</a> 'CACHE_LIFETIME'
+    or if you use <a href="#func_clearcache" class="toc-item">clearCache()</a>
+    or <a href="#func_recache" class="toc-item">recache()</a> to do it manually.<br>
+    <br>
+    Please see the <a href="#options" class="toc-item">OPTIONS</a> section for
+    further details of how you can configure your own cache system.<br>
+    <br>
+    NB: vlibTemplateCache caches a template once all of the &lt;tmpl_include&gt;'s
+    have been parsed. Therefore if you change one of the included files, you must
+    recache for the changes to be taken into account.</p>
+  <p>
+  <br>
+  <h2><a name=func_clearcache>clearCache()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  clearCache()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p> <br>
+    This will manually clear the cached file, forcing vlibTemplate to take a new
+    version of the template file into cache.<br>
+    <br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;clearCache()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <h2><a name=func_recache>recache()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  This function is an alias for <a href="#func_clearcache" class="toc-item">clearCache()</a>.
+  <br>
+  <br>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tmpl-&gt;recache()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <h2><a name=func_setcachelifetime>setCacheLifeTime()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setCacheLifeTime(int seconds)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the lifetime of the cache for this template file to the
+    integer <i>seconds</i>.</p>
+  <br>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $tmpl-&gt;setCacheLifeTime(60); // sets the cache time to 1 minute
+</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <h2><a name=func_setcacheextension>setCacheExtension()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  setCacheExtension(string ext)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the extension that vlibTemplateCache will use to locate the
+    cached file<i></i>.</p>
+  <br>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $tmpl-&gt;setCacheExtension('cache');
+</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p>NB: do not include the full stop in the above string.<br>
+    <br>
+    <br>
+    <br>
+  </p>
+  <h1><a name=options>Options</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18 width="18"></a><br>
+  </h1>
+  <p>Below I'll describe the options that you can use when configuring vlibTemplate
+    to work to your needs.<br>
+    All of the following options detailed below can be edited in your ini.php
+    file (or ini.php-dist in the archive).<br>
+    <br>
+    Each option can be set in the ini.php file which will mean that this value
+    is taken as a default for each template file you use, or they can be set in
+    an array as the second parameter to <a href="#func_vlibtemplate" class="toc-item">vlibTemplate()</a>
+    the main class constructor.<br>
+    <br>
+    <b>i) </b><span class="toc-itemnouner">TEMPLATE_DIR</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- the default include path
+    to you where you store your templates. This option can make it easier for
+    you to access<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your templates
+    when scripting.<br>
+    <br>
+    <b>ii)</b> <span class="toc-itemnouner">MAX_INCLUDES</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- to avoid recursive includes
+    using &lt;tmpl_include&gt;, this options sets the include depth that vlibTemplate
+    will drill down<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when including
+    files. Defaults to 10.<br>
+    <br>
+    <b>iii)</b> <span class="toc-itemnouner">GLOBAL_VARS</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- When you use a &lt;tmpl_var&gt;
+    tag inside a loop and the loop variable is null vlibTemplate will<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;check the global
+    scope as well, if this option is set to 1.<br>
+    <br>
+    <b>iv)</b> <span class="toc-itemnouner">GLOBAL_CONTEXT_VARS</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when set to 1, the following
+    variables are made available in the global scope.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NB: more variables
+    may be added in the future. All variable start and end with 2 underscores.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__SELF__</b>
+    - this variable value is the value of $PHP_SELF.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__REQUEST_URI__</b>
+    - same as __SELF__ but appends any GET method parameters.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__PARSE_TIME__</b>
+    - time taken to parse template. Only used when TIME_PARSE option is set to
+    1. <br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. &lt;a href='&lt;tmpl_var
+    name=&quot;__REQUEST_URI__&quot;&gt;'&gt;Refresh current page&lt;/a&gt;<br>
+    <br>
+    <b>v)</b> <span class="toc-itemnouner">LOOP_CONTEXT_VARS</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when set to 1, the following
+    variables are made available within the scope of each &lt;tmpl_loop&gt;.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NB: more variables
+    may be added in the future.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__FIRST__</b>
+    - is true when you are currently on the first row of the loop.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__LAST__</b>
+    - is true when you are on the last row of the loop.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__INNER__</b>
+    - is true when you are on neither the first or last row of the loop.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__EVEN__</b>
+    - is true when you are on an even row of the loop.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__ODD__</b>
+    - is true when you are on an odd row of the loop. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>__ROWNUM__</b>
+    - an integer of the current row number starting at 1.<br>
+    <br>
+    <b>vi)</b> <span class="toc-itemnouner">SET_LOOP_VAR</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- because global variables
+    and loop variables are handled seperately in vlibTemplate, to use a <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tmpl_if/unless/elseif&gt;
+    on a loop you must set this option to 1. This will in turn set a variable
+    to<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true in the global
+    scope with the same name as the loop only if the loop is not empty.<br>
+    <br>
+    <b>vii)</b> <span class="toc-itemnouner">DEFAULT_ESCAPE</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when using the template
+    in an html-based application you should escape most of the string passed into<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the template using
+    htmlspecialchars(). This option will aloow you to specify a default escape
+    type for all<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of your &lt;tmpl_var&gt;'s.
+    To overwrite this option, you can either use a different setting when instantiating
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vlibTemplate using
+    the options array, or on per tag basis i.e. &lt;tmpl_var name=&quot;varname&quot;
+    escape=&quot;url&quot;&gt;.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following
+    values are all possible escape values.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NB: more escape
+    attributes may be added in the future.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HTML</b> -
+    html escapes a string.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>URL</b> - url
+    escapes a string.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SQ</b> - escapes
+    single quotes in a string.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DQ</b> - escapes
+    double quotes in a string.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NONE</b> -
+    turns of escaping.<br>
+  </p>
+  <p><b>viii)</b> <span class="toc-itemnouner">STRICT</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when set to 1, vlibTemplate
+    will die() upon finding an incorrect &lt;tmpl&gt;'esque tag. i.e. &lt;tmpl_vat
+    name=&quot;varname&quot;&gt;<br>
+    <br>
+    <b>ix)</b> <span class="toc-itemnouner">CASELESS</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when set to 1, vlibTemplate
+    will become case-INSENSITIVE. setVar('myvar1') will be called even using <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tmpl_var name=&quot;mYvAr1&quot;&gt;.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NB: All &lt;tmpl_*&gt;
+    tags are case INSENSITIVE, this option refers to the variable and loop names.<br>
+    <br>
+    <b>x)</b> <span class="toc-itemnouner">UNKNOWNS</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- will define how variables
+    like &lt;tmpl_var name=&quot;myvar&quot;&gt; are handled if they have not
+    been set using setVar().<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>IGNORE</b>
+    - (default) completely ignores the unfound variable.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>REMOVE</b>
+    - removes the &lt;tmpl_var&gt; tag, but notes the tag for use with the <a href="#func_unknownsexist" class="toc-item">unknown</a>
+    functions. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LEAVE</b> -
+    will leave the tag as it is, and note it.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PRINT</b> -
+    escapes the actual unknown tag using html encoding so &lt;tmpl_var name=&quot;var1&quot;&gt;
+    becomes <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;lt;tmpl_var
+    name=&amp;quot;var1&amp;quot;&amp;gt; so that it is easily visible. Notes
+    it also.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;COMMENT</b>
+    - comments out the tag using html style comments, and note it.<br>
+    <br>
+    <b>xi)</b> <span class="toc-itemnouner">TIME_PARSE</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- when set to 1, vlibTemplate
+    will time how long it takes to parse the template. see <a href="#func_getparsetime" class="toc-item">getParseTime()</a>.
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;If <b>TIME_PARSE</b>
+    and <b>GLOBAL_CONTEXT_VARS</b> are both set to 1, then a Global var called
+    <b>__PARSE_TIME__</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is set with
+    the time it took to parse the template.<br>
+    <br>
+    <b>xii)</b> <span class="toc-itemnouner">CACHE_DIRECTORY</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- directory where the cached
+    filed will be stored when using <a href="#sec_vlibtemplatecache" class="toc-item">vlibTemplateCache</a>.<br>
+    <br>
+    <b>xiii) </b><span class="toc-itemnouner">CACHE_LIFETIME</span> <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- lifetime of the cached file
+    in seconds. Defaults to 604800 seconds (1 week).<br>
+    <br>
+    <b>xiv)</b> <span class="toc-itemnouner">CACHE_EXTENSION</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- extension used when caching
+    files.<br>
+    <br>
+    <br>
+  </p>
+  <h1><a name=sec_security>SECURITY</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>As vlibTemplate compiles the templates into native PHP code, the template files
+    should be considered in the same way as any other PHP file in terms of security.</p>
+  <p>In the future, there will be an option for removing php-style code from the
+    template but that will probably NOT be fool-proof. It is therefore in your
+    interests to deal with the template files as you would a PHP file.</p>
+  <p><br>
+  </p>
+  <h1><a name=sec_bugs>BUGS</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>I've tested vlibTemplate on Windows and Linux Mandrake and on Apache and IIS.
+    I have not been able to find any bugs<br>
+    however this obviously doesn't mean that there aren't any.<br>
+    <br>
+    If you find a bug, or what you think is a bug, then send an e-mail to <a href="mailto:vlib@activefish.com" class="toc-item">vlib@activefish.com</a>
+    with any helpful information.<br>
+    <br>
+    When submitting bug reports, be sure to include full details, including the
+    VERSION of the class, a test script and a test <br>
+    template demonstrating the problem! <br>
+    <br>
+  </p>
+  <h1><a name=sec_credits>CREDITS</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>I had the idea to write vlibTemplate when I started to use PHP on a project
+    after creating websites in Perl using the <br>
+    HTML::Template module available in the CPAN package.<br>
+    This module was my inspiration, and although vlibTemplate has been completely
+    written from the ground up for PHP, it's tag <br>
+    syntax is extremely similar to that of HTML::Template.<br>
+    <br>
+    In fact if you have templates written for HTML::Template, you will be able
+    to write PHP code to use that template.<br>
+    If you're porting from vlibTemplate to HTML::Template, there are certain things
+    in the template which will not work as I have<br>
+    added slightly more features to the tags than the perl module handles.<br>
+    <br>
+    Anyway, many thanks to them for the inspiration. See <a href="http://www.cpan.org" target="_blank" class="toc-item">http://www.cpan.org</a>.</p>
+  <p><br>
+  </p>
+  <h1><a name=sec_author>AUTHOR</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Kelvin Jones. Contact me at <a href="mailto:kelvin@kelvinjones.co.uk" class="toc-item">kelvin@kelvinjones.co.uk</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_download>DOWNLOAD</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Download the latest version from <a href="http://www.activefish.com/vlib/downloads/" target="_blank" class="toc-item">http://www.activefish.com/vlib/downloads/</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_license>LICENSE</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>vLIB is licenced under the OpenSource Artistic Licence (<a href="http://www.opensource.org/licenses/artistic-license.html" target="_blank" class="toc-item">http://www.opensource.org/licenses/artistic-license.html</a>).<br>
+    Please see the <a href="../LICENSE" target="_blank" class="toc-item">LICENSE</a>
+    file available within the archive.</p>
+  <p> </p>
+  <p><br>
+  </p>
+  <h1><a name=sec_install>INSTALL</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Please see the <a href="../INSTALL" target="_blank" class="toc-item">INSTALL</a>
+    file available within the archive.<br>
+    <br>
+    <br>
+  </p>
+  <h1><a name=sec_forum>FORUM</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>There are now forums where you can discuss vlib at <a href="http://www.activefish.com/vlib/forum/" class="toc-itemnouner">http://www.activefish.com/vlib/forum/</a>.</p>
+  <h1><br>
+    <a name=sec_docs_in_other_langs>DOCUMENTATION IN OTHER LANGUAGES</a>&nbsp;
+    <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Here you can find links to contributed documentaion in languages other than
+    English.<br>
+    Many thanks goes out to the authors of these sites:<br>
+    <br>
+    &nbsp;&nbsp;<b><a href="http://www.clausvb.de/php/vtpl.htm" target="_blank"><span class="toc-itemnouner">German:
+    http://www.clausvb.de/php/vtpl.html </span></a></b> - contributed by Claus
+    Van Beek, with examples.</p>
+  <p>&nbsp; </p>
+  <p>&nbsp; </p>
+</BLOCKQUOTE>
+</BODY></HTML>

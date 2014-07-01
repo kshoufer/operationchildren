@@ -1,0 +1,162 @@
+@charset "UTF-8";
+/* CSS Document */
+
+a img {
+	border:none;
+}
+.bottomnav
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color:#000;
+	position:relative;
+	top:-10px;
+}
+.bottomnav A:link {
+	color: #000;
+	text-decoration: none;
+	
+}
+.bottomnav A:visited {
+	color: #000;
+	text-decoration:none;
+}
+.bottomnav A:active {
+	color: #000;
+	text-decoration:none;
+}
+.bottomnav A:hover {
+	color: #6f3c29;
+	text-decoration: underline;
+}
+.breadcrumbs
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:11px;
+	color:#1f9f28;
+	position:relative; 
+	z-index:+1; 
+	top:-15px;
+}
+.breadcrumbs A:link {
+	color: #1f9f28;
+	text-decoration: none;
+	
+}
+.breadcrumbs A:visited {
+	color: #1f9f28;
+	text-decoration:none;
+}
+.breadcrumbs A:active {
+	color: #1f9f28;
+	text-decoration:none;
+}
+.breadcrumbs A:hover {
+	color: #1f9f28;
+	text-decoration: underline;
+}
+.copyrighttext
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color:#999a96;
+	position:relative;
+	top:3px;
+}
+
+.Header1
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:20px;
+	color:#6f3c29;
+}
+.Header2
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:15px;
+	color:#6f3c29;
+}
+
+.navigationheader
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:13px;
+	color:#999a96;
+	font-weight:bold;
+}
+.maincopy
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#000;
+}
+.maincopy A:link {
+	color: #0b5ca9;
+	text-decoration: none;
+	
+}
+.maincopy A:visited {
+	color: #0b5ca9;
+	text-decoration:none;
+}
+.maincopy A:active {
+	color: #0b5ca9;
+	text-decoration:none;
+}
+.maincopy A:hover {
+	color: #f19696;
+	text-decoration: underline;
+}
+.copyrighttext
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color:#999a96;
+	position:relative;
+	top:3px;
+}
+.smallcopy
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000;
+	font-weight:bold;
+}
+.smallcopy A:link {
+	color: #000;
+	text-decoration: none;
+	
+}
+.smallcopy A:visited {
+	color: #000;
+	text-decoration:none;
+}
+.smallcopy A:active {
+	color: #000;
+	text-decoration:none;
+}
+.smallcopy A:hover {
+	color: #999a96;
+	text-decoration: underline;
+}
+.smallheader
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:15px;
+	color:#1f9f28;
+}
+.sidemenu
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#6f3c29;
+	
+}
+.taxid
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000;
+	position:relative;
+	top:0px;
+}

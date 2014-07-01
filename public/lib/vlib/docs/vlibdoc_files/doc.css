@@ -1,0 +1,130 @@
+BODY {
+	FONT-FAMILY: Arial,Helvetica
+}
+.mmenuon {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ff6600; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.mmenuoff {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.cpyright {
+	FONT-WEIGHT: bold; FONT-SIZE: xx-small; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.cpyrightText {
+	FONT-WEIGHT: bold; FONT-SIZE: xx-small; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.sections {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.dsections {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.slink {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.slink2 {
+	COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.maintitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 18pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.dblArrow {
+	FONT-WEIGHT: bold; FONT-SIZE: small; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.menuSec {
+	FONT-WEIGHT: bold; FONT-SIZE: small; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.newstext {
+	FONT-SIZE: small; FONT-FAMILY: Arial,Helvetica
+}
+.linkmenu {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+P {
+	FONT-FAMILY: Verdana, Arial,Helvetica;
+	FONT-SIZE: 10pt
+}
+PRE {
+	FONT-SIZE: 10pt
+}
+.quote {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-STYLE: italic; FONT-FAMILY: Times; TEXT-DECORATION: none
+}
+.smstd {
+	FONT-SIZE: x-small; COLOR: #000000; FONT-FAMILY: Arial,Helvetica
+}
+.std {
+	COLOR: #000000; FONT-FAMILY: Arial,Helvetica
+}
+.meerkatTitle {
+	FONT-SIZE: x-small; COLOR: black; FONT-FAMILY: sans-serif
+}
+.meerkatDescription {
+	FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: sans-serif
+}
+.meerkatCategory {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: brown; FONT-STYLE: italic; FONT-FAMILY: sans-serif
+}
+.meerkatChannel {
+	FONT-SIZE: 9pt; COLOR: brown; FONT-STYLE: italic; FONT-FAMILY: sans-serif
+}
+.meerkatDate {
+	FONT-SIZE: xx-small; COLOR: #336699; FONT-FAMILY: sans-serif
+}
+.tocTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.toc-item {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: underline
+}
+.perlVersion {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.docTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.dotDot {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Arial,Helvetica
+}
+.docSec {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica
+}
+.docVersion {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.docSecs-on {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.docSecs-off {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: large; COLOR: #336699; FONT-FAMILY: Verdana,Arial,Helvetica; TEXT-DECORATION: none
+}
+DL {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+UNKNOWN {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica
+}
+.moduleInfo {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.moduleInfoSec {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.moduleInfoVal {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: underline
+}
+.cpanNavTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ffffff; FONT-FAMILY: Arial,Helvetica
+}
+.cpanNavLetter {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #333333; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}
+.cpanCat {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #336699; FONT-FAMILY: Arial,Helvetica; TEXT-DECORATION: none
+}

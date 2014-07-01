@@ -1,0 +1,936 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>vlibMimeMail</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<LINK href="vlibdoc_files/doc.css" type=text/css rel=stylesheet>
+<SCRIPT language=JavaScript src="vlibdoc_files/doc.js"></SCRIPT>
+<META name=GENERATOR content="ConText 0.97">
+<style type="text/css">
+<!--
+.toc-itemnouner { FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial, Helvetica}
+-->
+</style>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<span class="toc-itemnouner"></span>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#d2d2d2 border=0>
+  <TBODY>
+  <TR>
+    <TD height=25 width="27%">&nbsp;<span class=docTitle>vlibMimeMail Documentation</span></TD>
+    <TD height=25 width="68%" align="right"><a href="./index.html" class=toc-item>Back
+      To Index</a></TD>
+    <TD align=right width="5%"> &nbsp; &nbsp; <A href="javascript:print();" onMouseOver="status='Print page'; return true"  onMouseOut="status=''; return true">
+      <IMG height=16 alt="print page" src="vlibdoc_files/printer.gif" width=16
+      border=0></A>&nbsp; &nbsp; </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+<BLOCKQUOTE><A name=top></A> 
+  <!--END-COMMON-HEAD-->
+  <UL>
+    <LI><A class=toc-item
+    href="#NAME">NAME</A> 
+    <LI><A class=toc-item
+    href="#SYNOPSIS">SYNOPSIS</A> 
+    <LI><A class=toc-item
+    href="#DESCRIPTION">DESCRIPTION</A> 
+    <LI><A class=toc-item
+    href="#MOTIVATION">MOTIVATION</A> 
+    <LI><A class=toc-item
+    href="#sec_vlibmimemail">vlibMimeMail</A> 
+      <UL>
+        <LI><a class=toc-item
+    href="#func_vlibmimemail">vlibMimeMail</a><a href="#func_vlibtemplate" class="toc-item">() 
+          </a> 
+        <LI><a href="#func_autocheck" class="toc-item">autoCheck() </a> 
+        <LI><a href="#func_to" class="toc-item">to() </a> 
+        <LI><a href="#func_cc" class="toc-item">cc() </a> 
+        <LI><a href="#func_bcc" class="toc-item">bcc() </a> 
+        <LI><a href="#func_from" class="toc-item">from()</a> 
+        <LI><a href="#func_replyto" class="toc-item">replyTo()</a> 
+        <LI><a href="#func_subject" class="toc-item">subject() </a> 
+        <LI><a href="#func_body" class="toc-item">body() </a> 
+        <LI><a href="#func_htmlbody" class="toc-item">htmlBody() </a> 
+        <LI><a href="#func_attach" class="toc-item">attach() </a> 
+        <LI><a href="#func_organization" class="toc-item">organization() </a> 
+        <LI><a href="#func_receipt" class="toc-item">receipt() </a> 
+        <LI><a href="#func_priority" class="toc-item">priority() </a> 
+        <LI><a href="#func_validateemail" class="toc-item">validateEmail() </a> 
+        <LI><a href="#func_send" class="toc-item">send() </a> 
+        <LI><a href="#func_get" class="toc-item">get() </a>
+      </UL>
+    <li><a class=toc-item
+    href="#sec_bugs">BUGS</a> 
+    <li><a class=toc-item
+    href="#sec_author">AUTHOR</a> 
+    <li><a class=toc-item
+    href="#sec_download">DOWNLOAD</a> 
+    <li><a class=toc-item
+    href="#sec_license">LICENSE</a> 
+    <li><a class=toc-item
+    href="#sec_install">INSTALL</a>
+    <li><a class=toc-item
+    href="#sec_forum">FORUM</a> 
+  </UL>
+  <HR noShade SIZE=1>
+  <H1><A name=NAME>NAME</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibMimeMail - php class enabling you to send Mime encoded emails with attachments, 
+    html mail ..etc.<br>
+    <br>
+  </P>
+  <H1><A name=SYNOPSIS>SYNOPSIS</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <TABLE cellSpacing=0 cellPadding=1 width="92%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD height="196"> 
+              <p> &nbsp;&nbsp;&nbsp;include &quot;./vLIB/vlibMimeMail.php&quot;;<br>
+                &nbsp;&nbsp;&nbsp;$htmlbody = &quot;&lt;html&gt;\n&lt;body&gt;\nHello 
+                test!...\n\n&lt;/body&gt;\n&lt;/html&gt;&quot;;<br>
+                &nbsp;&nbsp;&nbsp;$mail = new vlibMimeMail; // create the mail<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;to('to_example@example.com', 'Recipient 
+                1');<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;from('sender@example.com', 'Sender');<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;subject(&quot;the subject of the mail&quot;);<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;body(&quot;Hello test!... in plain 
+                text&quot;); // set the body in plain text<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;htmlBody($htmlbody); // set the body 
+                in html format<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;cc(&quot;cc_example@example.com&quot;, 
+                'Recipient 2');<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;bcc(&quot;bcc_example@example.com&quot;, 
+                'Recipient 3');<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;priority(1); // set the priority to 
+                Highest<br>
+                &nbsp;&nbsp;&nbsp;$mail-&gt;attach(&quot;example.doc&quot;); // 
+                attach word doc
+              <p>&nbsp;&nbsp;&nbsp;$mail-&gt;send(); // send the mail<br>
+                &nbsp;&nbsp;&nbsp;print(&quot;Message sent:&lt;pre&gt;&quot;.$mail-&gt;get().&quot;&lt;/pre&gt;&quot;);</p>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p>If everything goes well, a mail should be sent to the recipients and you 
+    should see a page with the mail details.</P>
+  <H1><br>
+    <A name=DESCRIPTION>DESCRIPTION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibMimeMail is a class which makes sending mime encoded email messages a 
+    simple task. It will make your code alot<br>
+    easier to read, write and debug.<br>
+    <br>
+    vlibMimeMail includes the following features:<br>
+    <br>
+  </P>
+  <ul>
+    <li class="toc-itemnouner"><span class="toc-itemnouner"> Send multiple attachments</span> 
+    <li class="toc-itemnouner"> Specify one or many recipients in To, Cc or Bcc
+    <li class="toc-itemnouner"> Specify a priority level
+    <li class="toc-itemnouner"> Auto validation of all email addresses
+    <li class="toc-itemnouner"> Request a receipt from the recipient
+    <li class="toc-itemnouner">Write an HTML encoded message<br>
+      <br>
+    
+  </ul>
+  <H1><A name=MOTIVATION>MOTIVATION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>Almost all websites around need to send emails to their visitors at some 
+    point, whether it be a confirmation of joining<br>
+    your site or a newsletter or something else.<br>
+    <br>
+    This class simplifies the tasks of adding mime headers for all of the different 
+    features into easily understandable<br>
+    functions.<br>
+    <br>
+  </P>
+  <H1><A name=sec_vlibmimemail>vlibMimeMail</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A><br>
+    <br>
+  </H1>
+  <H2><A name=func_vlibmimemail>vlibMimeMail()</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>Called upon instantiation of the class.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  vlibMimeMail ()</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p><br>
+  </P>
+  <h2><a name=func_autocheck>autoCheck()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  autoCheck (bool check)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p> <br>
+    If check is true (as it is by default), all email addresses passed to vlibMimeMail 
+    will be checked for validity.<br>
+    It is just a syntax check thus is very quick.<br>
+    <br>
+    <br>
+  </p>
+  <H2><A name=func_to>to()</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A><br>
+  </H2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  to (string email [, string name])  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <P>This function sets the 'To' header for the message. The email parameter is 
+    the email of the recipient and the name<br>
+    parameter is the name of the recipient, the name parameter is optional.<br>
+    <br>
+    You can call this function as many times as you like.</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="93%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>   $mail-&gt;to('to_example@example.com', 'Mr Example To');</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p><br>
+  </P>
+  <h2><a name=func_cc>cc()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  cc (string email [, string name])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>This function sets the 'Cc' header for the message. The email parameter is 
+    the email of the recipient and the name<br>
+    parameter is the name of the recipient, the name parameter is optional.<br>
+    <br>
+    You can call this function as many times as you like.</p>
+  <p> 
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>   $mail-&gt;cc('cc_example@example.com', 'Mr Example Cc');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_bcc>bcc()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  bcc (string email [, string name])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>This function sets the 'Bcc' header for the message. The email parameter 
+    is the email of the recipient and the name<br>
+    parameter is the name of the recipient, the name parameter is optional.<br>
+    <br>
+    You can call this function as many times as you like.</p>
+  <p> 
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>   $mail-&gt;bcc('bcc_example@example.com', 'Mr Example Bcc');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p>&nbsp; </p>
+  <h2><a name=func_from>from()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  from (string email [, string name])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>This function sets the 'From' header for the message. The email parameter 
+    is the email of the recipient and the name<br>
+    parameter is the name of the recipient, the name parameter is optional.<br>
+    <br>
+    You can call this function as many times as you like.</p>
+  <p> 
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>   $mail-&gt;from('sender@example.com', 'Mr Sender');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_replyto>replyTo()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  replyTo (string email [, string name])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>This function sets the 'Reply-To' header for the message. The email parameter 
+    is the email of the recipient and the name<br>
+    parameter is the name of the recipient, the name parameter is optional.<br>
+    <br>
+    You can call this function as many times as you like.</p>
+  <p> 
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>   $mail-&gt;replyTo('sender@example.com', 'Mr Sender');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p>&nbsp; </p>
+  <p> </P>
+  <h2><a name=func_subject>subject()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  subject (string subject)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the subject of the message.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $mail-&gt;subject('subject of the mail.');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_body>body()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  body (string body)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the plain text body of the message.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $body = 'This is the body of the message!';
+   $mail-&gt;body($body);  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <p></p>
+  <h2><a name=func_htmlbody>htmlBody()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  htmlBody (string htmlbody)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the body of the message in HTML.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>   $htmlbody = &quot;&lt;html&gt;&lt;body&gt;&lt;p&gt;This is the body of the message in HTML.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;;<br>&nbsp;&nbsp;&nbsp;$mail-&gt;htmlBody($htmlbody);</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_attach>attach()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  attach (string filename [, string disposition, string mimetype])  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function attaches a file to the message.<br>
+    <br>
+    <b>Filename</b> is the 'string' with the include path to the file you want 
+    to attach.<br>
+    <b>Disposition</b> can be 1 of 2 values:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;attachment (default) - the file is attached to the 
+    message and displayed in the client as a link.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;inline - the client should try to display the attachment 
+    directly inside the message.<br>
+    <b>Mimetype</b>, if specified, will set the mimetype for this particular attachment. 
+    If not specified it will search for the<br>
+    mimetype (using the extension of the file) in vlibCommon/mime_types.php.<br>
+    <br>
+    You can call this function as many times as you like.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>   $mail-&gt;attach('./example.doc'); // simple attachment<br>&nbsp;&nbsp;&nbsp;$mail-&gt;attach('./example.doc', 'inline', 'application/msword'); // full attachment</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <h2><br>
+    <br>
+    <a name=func_organization>organization()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  organization (string org)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the 'Organization' header for the message.</p>
+  <p>&nbsp;</p>
+  <h2><a name=func_receipt>receipt()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  receipt (bool yesno)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>If yesno is set to true then the 'Disposition-Notification-To' will be set 
+    to either 'Reply-To' or 'From', depending<br>
+    on which has been set.</p>
+  <p>&nbsp;</p>
+  <h2><a name=func_priority>priority()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  priority (int level)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function sets the 'X-Priority' header of the message.<br>
+    <br>
+    Level must be between 1 and 5 and must be passed as an integer.<br>
+    Levels are:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;1 - Highest<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;2 - High<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;3 - Normal<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;4 - Low<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;5 - Lowest<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  $mail-&gt;priority(1); // sets the priority to highest<a name=func_reset></a></pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_validateemail>validateEmail()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  validateEmail (string address)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function validates the email address 'address' and returns true on validation 
+    success or false on failure.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  $mail-&gt;validateEmail('to_example@example.com'); // returns true<br>  $mail-&gt;validateEmail('to example@example.com'); // returns false</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_send>send()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  send ()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function compiles the email and sends it. Returns true on success, false 
+    on failure.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  $success = $mail-&gt;send();<br>&nbsp;&nbsp;if (!$success) die('Mail not sent!');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_get>get()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  get ()    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function compiles the email and returns a string with exactly all of 
+    the informaton (headers and attachments)<br>
+    as it will be sent by <a href="#func_send" class="toc-itemnouner">send()</a>.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  print('&lt;pre&gt;'.$mail-&gt;get().'&lt;/pre&gt;');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+    <br>
+  </p>
+  <h1><a name=sec_bugs>BUGS</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>vlibMimeMail has only been tested on Linux Mandrake and worked without any 
+    problems.<br>
+    <br>
+    If you find a bug, or what you think is a bug, then send an e-mail to <a href="mailto:vlib@activefish.com" class="toc-item">vlib@activefish.com</a> 
+    with any helpful information.<br>
+    <br>
+    When submitting bug reports, be sure to include full details, including the 
+    VERSION of the class and a test script.</p>
+  <p><br>
+  </p>
+  <h1><a name=sec_author>AUTHOR</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Kelvin Jones. Contact me at <a href="mailto:kelvin@kelvinjones.co.uk" class="toc-item">kelvin@kelvinjones.co.uk</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_download>DOWNLOAD</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Download the latest version from <a href="http://www.activefish.com/vlib/downloads/" target="_blank" class="toc-item">http://www.activefish.com/vlib/downloads/</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_license>LICENSE</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>vLIB is licenced under the OpenSource Artistic Licence (<a href="http://www.opensource.org/licenses/artistic-license.html" target="_blank" class="toc-item">http://www.opensource.org/licenses/artistic-license.html</a>).<br>
+    Please see the <a href="../LICENSE" target="_blank" class="toc-item">LICENSE</a>
+    file available within the archive.</p>
+  <p> </p>
+  <p><br>
+  </p>
+  <h1><a name=sec_install>INSTALL</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Please see the <a href="../INSTALL" target="_blank" class="toc-item">INSTALL</a> 
+    file available within the archive.</p>
+  <h1><br>
+    <a name=sec_forum>FORUM</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>There are now forums where you can discuss vlib at <a href="http://www.activefish.com/vlib/forum/" class="toc-itemnouner" target="_blank">http://www.activefish.com/vlib/forum/</a>.</p>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+</BLOCKQUOTE>
+</BODY></HTML>

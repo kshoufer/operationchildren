@@ -1,0 +1,1766 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>vlibDate</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<LINK href="vlibdoc_files/doc.css" type=text/css rel=stylesheet>
+<SCRIPT language=JavaScript src="vlibdoc_files/doc.js"></SCRIPT>
+<META name=GENERATOR content="ConText 0.97">
+<style type="text/css">
+<!--
+.toc-itemnouner { FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699; FONT-FAMILY: Arial, Helvetica}
+-->
+</style>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<span class="toc-itemnouner"></span>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#d2d2d2 border=0>
+  <TBODY>
+  <TR>
+    <TD height=25 width="27%">&nbsp;<span class=docTitle>vlibDate Documentation</span></TD>
+    <TD height=25 width="68%" align="right"><a href="./index.html" class=toc-item>Back
+      To Index</a></TD>
+    <TD align=right width="5%"> &nbsp; &nbsp; <A href="javascript:print();" onMouseOver="status='Print page'; return true"  onMouseOut="status=''; return true">
+      <IMG height=16 alt="print page" src="vlibdoc_files/printer.gif" width=16
+      border=0></A>&nbsp; &nbsp; </TD>
+  </TR>
+  </TBODY>
+</TABLE>
+<BLOCKQUOTE><A name=top></A> 
+  <!--END-COMMON-HEAD-->
+  <UL>
+    <LI><A class=toc-item
+    href="#NAME">NAME</A> 
+    <LI><A class=toc-item
+    href="#SYNOPSIS">SYNOPSIS</A> 
+    <LI><A class=toc-item
+    href="#DESCRIPTION">DESCRIPTION</A> 
+    <LI><A class=toc-item
+    href="#MOTIVATION">MOTIVATION</A> 
+    <LI><A class=toc-item
+    href="#sec_supported_languages">SUPPORTED LANGUAGES</A> 
+    <LI><a class=toc-item
+    href="#sec_important">IMPORTANT (incl. formatting)</a> 
+    <LI><A class=toc-item
+    href="#sec_vlibdate">vlibDate</A> 
+      <UL>
+        <LI><a href="#func_vlibdate" class="toc-item">vlibDate() </a> 
+        <LI><a href="#func_formatdate" class="toc-item">formatDate() </a> 
+        <LI><a href="#func_getmonthfullname" class="toc-item">getMonthFullname() 
+          </a> 
+        <LI><a href="#func_getmonthabbrname" class="toc-item">getMonthAbbrname() 
+          </a> 
+        <LI><a href="#func_getWeekdayFullname" class="toc-item">getWeekdayFullname() 
+          </a> 
+        <LI><a href="#func_getweekdayabbrname" class="toc-item">getWeekdayAbbrname()</a> 
+        <LI><a href="#func_now" class="toc-item">now()</a> 
+        <LI><a href="#func_getsuffix" class="toc-item">getSuffix() </a> 
+        <LI><a href="#func_mkTimestamp" class="toc-item">mkTimestamp() </a> 
+        <LI><a href="#func_fromunixtime" class="toc-item">fromUnixTime() </a> 
+        <LI><a href="#func_setlang" class="toc-item">setLang() </a> 
+        <LI><a href="#func_addinterval" class="toc-item">addInterval() </a> 
+        <LI><a href="#func_subinterval" class="toc-item">subInterval() </a> 
+        <LI><a href="#func_nextday" class="toc-item">nextDay() </a> 
+        <LI><a href="#func_prevday" class="toc-item">prevDay() </a> 
+        <LI><a href="#func_isfuturedate" class="toc-item">isFutureDate() </a> 
+        <LI><a href="#func_ispastdate" class="toc-item">isPastDate() </a> 
+        <LI><a href="#func_isdate" class="toc-item">isDate() </a> 
+        <LI><a href="#func_isleapyear" class="toc-item">isLeapYear() </a> 
+        <LI><a href="#func_dayofweek" class="toc-item">dayOfWeek() </a> 
+        <LI><a href="#func_weekofyear" class="toc-item">weekOfYear() </a> 
+        <LI><a href="#func_juliandate" class="toc-item">julianDate() </a> 
+        <LI><a href="#func_quarterofyear" class="toc-item">quarterOfYear()</a>
+        <LI><a href="#func_getlongyear" class="toc-item">getLongYear()</a>
+        <LI><a href="#func_diffindays" class="toc-item">diffInDays()</a>
+        <LI><a href="#func_daysinmonth" class="toc-item">daysInMonth()</a>
+        <LI><a href="#func_datetodays" class="toc-item">dateToDays()</a>
+        <LI><a href="#func_encodedate" class="toc-item">encodeDate()</a>
+        <LI><a href="#func_daystodate" class="toc-item">daysToDate()</a>
+        <LI><a href="#func_decodedate" class="toc-item">decodeDate()</a>
+        <LI><a href="#func_getyear" class="toc-item">getYear()</a>
+        <LI><a href="#func_getmonth" class="toc-item">getMonth()</a>
+        <LI><a href="#func_getday" class="toc-item">getDay()</a>
+      </UL>
+    <li><a class=toc-item
+    href="#sec_bugs">BUGS</a> 
+    <li><a class=toc-item
+    href="#sec_credits">CREDITS</a> 
+    <li><a class=toc-item
+    href="#sec_author">AUTHOR</a> 
+    <li><a class=toc-item
+    href="#sec_download">DOWNLOAD</a> 
+    <li><a class=toc-item
+    href="#sec_license">LICENSE</a> 
+    <li><a class=toc-item
+    href="#sec_install">INSTALL</a> 
+    <li><a class=toc-item
+    href="#sec_forum">FORUM</a> 
+  </UL>
+  <HR noShade SIZE=1>
+  <H1><A name=NAME>NAME</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibDate - php class enabling you to handle dates from year 0001-9999 and 
+    in multiple languages. package: vLIB <br>
+    <br>
+  </P>
+  <H1><A name=SYNOPSIS>SYNOPSIS</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td height="141"> 
+              <p> &nbsp;&nbsp;&nbsp;include &quot;./vLIB/vlibDate.php&quot;;<br>
+                &nbsp;&nbsp;&nbsp;$date = new vlibDate();<br>
+                &nbsp;&nbsp;&nbsp;$today = $date-&gt;now();
+              <p>&nbsp;&nbsp;&nbsp;// now we loop through all languages and display 
+                today's date<br>
+                &nbsp;&nbsp;&nbsp;foreach ($date-&gt;accepted_langs as $lang) 
+                {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$date-&gt;setLang ($lang);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $date-&gt;formatDate($today, 
+                '%A %d %B %Y&lt;br&gt;');<br>
+                &nbsp;&nbsp;&nbsp;}</p>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>If everything goes well, you should see today's date being displayed in all 
+    of the languages supported by this<br>
+    version of vlibDate.</p>
+  <H1><br>
+    <A name=DESCRIPTION>DESCRIPTION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>vlibDate is a class for displaying and manipulating dates from year 0001-9999. 
+    <br>
+    vLIBDate not only makes this a posibility but makes it an easy task with many 
+    different functions to enable<br>
+    you to do all kinds of date manipulation.<br>
+    vlibDate also offers you a simple way of displaying dates in multiple languages 
+    (<a href="#sec_supported_languages" class="toc-item">SUPPORTED LANGUAGES</a>).<br>
+    <br>
+    <br>
+  </P>
+  <H1><A name=MOTIVATION>MOTIVATION</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>Whilst recently working on a project I needed a way of verifying some Dates 
+    of Birth.<br>
+    Of course, it isn't possible to do anything with dates before 1970 on 32-bit 
+    systems, and I had used the<br>
+    perl CPAN package Date::Calc which contains many methods for manipulating 
+    dates. <br>
+    I also liked some of the functions used in MySQL so I incorporated them as 
+    well.<br>
+    <br>
+    And so this is why vlibDate was created, it's a sort of hybrid between a lite 
+    version of Perl's Date::Calc and <br>
+    MySQL's Date functions.<br>
+    <br>
+    <br>
+  </P>
+  <H1><A name=sec_supported_languages>SUPPORTED LANGUAGES</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H1>
+  <P>The following languages are currently supported by vlibDate, in brackets 
+    are the codes used to<br>
+    set the language.<br>
+    <br>
+  </P>
+  <ul>
+    <li class="toc-itemnouner"><span class="toc-itemnouner"> English (en)</span>
+    <li class="toc-itemnouner"> German (de)
+    <li class="toc-itemnouner"> French (fr)
+    <li class="toc-itemnouner"> Spanish (es)
+    <li class="toc-itemnouner"> Portuguese (pt)
+    <li class="toc-itemnouner">Italian (it)
+    <li class="toc-itemnouner">Dutch (nl)
+    <li class="toc-itemnouner">Danish (da)
+    <li class="toc-itemnouner">Norwegian (no)
+    <li class="toc-itemnouner">Swedish (sv)
+    <li class="toc-itemnouner">Finnish (fi)
+  </ul>
+  <P>If you would like to contribute a language then please send an email to <a href="mailto:%20vlib@activefish.com" class="toc-itemnouner">vlib@activefish.com</a> 
+    with the days of the<br>
+    week, months of the year, and if possible the suffixes to the days of the 
+    month. If the language you would like<br>
+    to add has different weekday abbreviations than the first few letter (as in 
+    portuguese) then please send these<br>
+    as well.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </P>
+  <h1><a name=sec_important></a>IMPORTANT&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <P>Just a few of points before you get into vlibDate.<br>
+    <br>
+    1) Throughout the documentation you will come across quite often the String 
+    type timestamp.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;This is <b>not</b> a unix timestamp but a 'vlibDate 
+    timestamp'. vlibDate timestamps are simply a <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;string in 'YYYY-MM-DD' format, i.e. 2002-01-25. If 
+    a unix timestamp is required the unixtime<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;will be used as the type definition.<br>
+    <br>
+    2) In many functions, you can define a format for the string to be returned 
+    as. This format uses<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;similar syntax to the native php function strftime(), 
+    however not all formats are supported.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Here is a list of the formatting options supported.</P>
+  <P> &nbsp;&nbsp;&nbsp;&nbsp;* <b>%a</b> abbreviated weekday name (Sun, Mon, 
+    Tue)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%A</b> full weekday name (Sunday, Monday, Tuesday)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%b</b> abbreviated month name (Jan, Feb, Mar)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%B</b> full month name (January, February, March)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%d</b> day of month (range 00 to 31)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%e</b> day of month, single digit (range 0 to 
+    31)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%E</b> number of days since unspecified epoch 
+    (integer)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;(%E is useful for passing a date in a 
+    URL as an integer value.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then use decodeDate() to convert 
+    back to a date.)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%j</b> day of year (range 001 to 366)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%m</b> month as decimal number (range 1 to 12)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%n</b> newline character (\n)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%s</b> ordinal suffix for day of month<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%t</b> tab character (\t)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%w</b> weekday as decimal (0 = Sunday)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%U</b> week number of current year, first sunday 
+    as first week<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%y</b> year as decimal (range 00 to 99)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%Y</b> year as decimal including century (range 
+    0000 to 9999)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;* <b>%%</b> literal '%'<br>
+  </P>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>example of use:
+&nbsp;&nbsp;$date = new vlibDate('en');<br>  echo $date-&gt;formatDate('2002-02-15', '%A %e%s of %B, %Y');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <P>3) To set a default language for this class, you must edit the ini.php file.<br>
+    <br>
+    <br>
+  </P>
+  <H1><A name=sec_vlibdate>vlibDate</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A><br>
+    <br>
+  </H1>
+  <H2><A name=func_vlibdate>vlibDate()</A>&nbsp; <A
+  href="#top"><IMG
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></A></H2>
+  <P>Called upon instantiation of the class, this loads the default language or 
+    the language specified by lang:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE>  vlibDate ([string lang])</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p></P>
+  <P>The lang parameter must be the code of one of the supported languages. <br>
+    See the <a href="#sec_supported_languages" class="toc-item">SUPPORTED LANGUAGES</a> 
+    section:</P>
+  <P>
+  <TABLE cellSpacing=0 cellPadding=1 width="94%" bgColor=#000000 border=0>
+    <TBODY>
+    <TR>
+      <TD align=middle>
+        <TABLE cellSpacing=0 cellPadding=4 width="100%" bgColor=#e8e8e8
+border=0>
+          <TBODY>
+          <TR>
+            <TD>
+              <PRE> &nbsp;&nbsp;$date = new vlibDate('es'); // load spanish as the default language</PRE>
+            </TD>
+          </TR>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+    </TBODY>
+  </TABLE>
+  <p>NB: You can specifiy a language by default in your ini.php file which will 
+    be used if lang is not specified.<br>
+    <br>
+    <br>
+  </P>
+  <h2><a name=func_formatdate>formatDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h2>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  formatDate (string timestamp, string format)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p> <br>
+    Formats the date like strftime(). Returns a string in the specifies format 
+    for the given timestamp.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information on this 
+    and the format parameter, please <br>
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.<br>
+    <br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>$date-&gt;formatDate('2002-02-15', '%A %e%s of %B, %Y');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_getmonthfullname>getMonthFullname()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getMonthFullname (string timestamp)  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the full name of the month for the given timestamp.</p>
+  <p>The timestamp parameter is a vlibDate timestamp. For more information on 
+    this, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section.</p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>$date-&gt;getMonthFullname('2002-04-15'); // returns 'April'</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p></p>
+  <p>&nbsp;</p>
+  <h2><a name=func_getmonthabbrname>getMonthAbbrname()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getMonthAbbrname (string timestamp  [, int length=3])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the abbreviated name of the month for the given timestamp.</p>
+  <p>The timestamp parameter is a vlibDate timestamp. For more information on 
+    this, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section.<br>
+    The length parameter is the length of the sub string (defaults to 3).</p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>$date-&gt;getMonthAbbrname('2002-05-15'); // returns 'Apr'</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p></p>
+  <p></p>
+  <P>&nbsp;</P>
+  <h2><a name=func_getweekdayfullname>getWeekdayFullname()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getWeekdayFullname (string timestamp)  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the full name of the weekday for the given timestamp.</p>
+  <p>The timestamp parameter is a vlibDate timestamp. For more information on 
+    this, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section.</p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>$date-&gt;getWeekdayFullname('2002-04-15'); // returns 'Monday'</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p></p>
+  <p>&nbsp;</p>
+  <h2><a name=func_getweekdayabbrname>getWeekdayAbbrname()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getWeekdayAbbrname (string timestamp [, int length=3])  </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the abbreviated name of the weekday for the given timestamp.</p>
+  <p>The timestamp parameter is a vlibDate timestamp. For more information on 
+    this, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section.<br>
+    The length parameter is the length of the sub string (defaults to 3).</p>
+  <table cellspacing=0 cellpadding=1 width="94%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>$date-&gt;getWeekdayAbbrname('2002-05-15', 4); // returns 'Mond'</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <P>&nbsp; </P>
+  <h2><a name=func_now>now()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  now ()  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns a vlibDate timestamp for the current date.<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. 
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle height="18"> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td height="22"> 
+              <pre>   $today = $date-&gt;now(); // $today equals '2002-04-28' for example.</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_getsuffix>getSuffix()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  getSuffix(string timestamp)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns the suffix for the day of the month, i.e. 03 = rd (in english).<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. 
+    <br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $suffix = $tmpl-&gt;getSuffix('2002-01-01'); // sets $suffix to 'st'</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><br>
+  </p>
+  <p></p>
+  <h2><a name=func_mktimestamp>mkTimestamp()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  mkTimestamp([string year [, string month [, string day]]])  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This returns a vlibDate timestamp for the given date values. If any value 
+    is omitted, the current value will be used.<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  $today = mkTimestamp(); // all values omitted, takes current values for everything<br>&nbsp;&nbsp;$y2k = mkTimestamp('2000', '01', '01'); // returns '2001-01-01'</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <p><br>
+  </p>
+  <h2><a name=func_fromunixtime>fromUnixTime()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  fromUnixTime(int unixtime)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns a vlibDate timestamp for the given unix timestamp.<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. 
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>   $today = $date-&gt;fromUnixTime(time());</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <p></p>
+  <h2><br>
+    <a name=func_setlang>setLang()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  setLang(string lang)  </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>The lang parameter is the language code for the desired language.</p>
+  <p>For a list of supported languages and their codes, please see the <a href="#sec_supported_languages" class="toc-item">SUPPORTED 
+    LANGUAGES</a> section.</p>
+  <p>&nbsp;</p>
+  <h2><a name=func_addinterval>addInterval()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  addInterval (string timestamp , string interval)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns a timestamp with the interval <b>added</b>.<br>
+    Accepted interval values are DAY[S], WEEK[S], MONTH[S], YEAR[S] and CENTURY 
+    [CENTURIES].<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. 
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $futuredate = $date-&gt;addInterval($date-&gt;now(), '2 CENTURIES 5 YEARS 2 MONTHS 3 DAYS');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_subinterval>subInterval()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  subInterval (string timestamp , string interval)    </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns a timestamp with the interval <b>subtracted</b>.<br>
+    Accepted interval values are DAY[S], WEEK[S], MONTH[S], YEAR[S] and CENTURY 
+    [CENTURIES].<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this, 
+    please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. 
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  $pastdate = $date-&gt;subInterval($date-&gt;now(), '2 CENTURIES 5 YEARS 2 MONTHS 3 DAYS');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_nextday>nextDay()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  nextDay (string timestamp [, string format])    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns a vlibDate timestamp for the day after timestamp. If format is specified, 
+    then that format is returned <br>
+    instead of the timestamp.<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this 
+    and the format parameter, please <br>
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  $tomorrow = $date-&gt;nextDay( $date-&gt;now() );</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_prevday>prevDay()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre> &nbsp;prevDay (string timestamp [, string format])    </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns a vlibDate timestamp for the day before timestamp. If format is specified, 
+    then that format is returned <br>
+    instead of the timestamp.<br>
+    <br>
+    The returned timestamp is a vlibDate timestamp. For more information on this 
+    and the format parameter, please <br>
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  $yesterday = $date-&gt;prevDay( $date-&gt;now() );</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_isfuturedate>isFutureDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  isFutureDate (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns true if the given timestamp is in the future, false otherwise.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information on this 
+    and the format parameter, please <br>
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  $infuture = $date-&gt;isFutureDate('2005-01-01');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_ispastdate>isPastDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  isPastDate (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns true if the given timestamp is in the past, false otherwise.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.</p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  $inpast = $date-&gt;isPastDate('1999-01-01');</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_isdate>isDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  isDate (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns true if the given timestamp is valid, false otherwise.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  if (!$date-&gt;isDate('1999-13-35')) die ('invalid date!');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_isleapyear>isLeapYear()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  isLeapYear (string year)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>This function returns true if the given year is a leap year. The parameter 
+    year can either be a year in format<br>
+    YYYY or a vlibDate timestamp.<br>
+    <br>
+    For more information on a vlibDate timestamp, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section. </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  if ($date-&gt;isLeapYear('2000')) echo '2000 is a leap year';</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_dayofweek>dayOfWeek()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  dayOfWeek (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns day of week for the given timestamp: 0=Sunday ... 6=Saturday</p>
+  <p>For more information on a vlibDate timestamp, please see the <a href="#sec_important" class="toc-item">IMPORTANT</a> 
+    section.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="93%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre> echo $date-&gt;dayOfWeek('2002-04-29'); // echo's '1' , Monday</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_weekofyear>weekOfYear()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  weekOfYear (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns week of the year for the given timestamp, the first Sunday is first 
+    day of first week of the year.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section.</p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  echo $date-&gt;weekOfYear('2002-05-01'); //echo's '17'</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_juliandate>julianDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  julianDate (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns number of days since (and including) 1st January of the year in the 
+    given timestamp.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  echo 'today is day number '.$date-&gt;julianDate( $date-&gt;now() ).' of the year';</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <h2><br>
+    <a name=func_quarterofyear>quarterOfYear()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  quarterOfYear (string timestamp)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns quarter of the year for given timestamp.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre> echo &quot;we're currently in quarter number &quot;.$date-&gt;quarterOfYear( $date-&gt;now() );</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_getlongyear>getLongYear()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  getLongYear (string year)    </pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns the year in YYYY format for the given year in YY format. 0-49 is 
+    considered 21st century, 50-99 is <br>
+    20th century.<br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre> echo $date-&gt;getLongYear('98'); // will echo 1998</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_diffindays>diffInDays()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18 width="18"></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  diffInDays (string timestamp1, string timestamp2)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns number of days between two given timestamps.<br>
+    <br>
+    The timestamp parameters are vlibDate timestamps. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. <br>
+  </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>
+&nbsp;&nbsp;$today = $date-&gt;now();<br>  $diff = $date-&gt;diffInDays($today, '2050-01-01');</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_daysinmonth>daysInMonth()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  daysInMonth (string month [, string year])</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns the number of days in the month for the parameters month and year.<br>
+    Alternatively you can pass a timestamp as the month parameter and omit the 
+    year parameter for the same result.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td>
+              <pre>  echo $date-&gt;daysInMonth( $date-&gt;now() ); // will echo days in current month</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_datetodays>dateToDays()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  dateToDays (string timestamp)</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Converts a vlibDate timestamp to a number of days since a long distant epoch. 
+    You can use this to store dates<br>
+    or to pass dates from 1 URL to another, and then to reconvert them use <a href="#func_daystodate" class="toc-item">daysToDate()</a>.<br>
+    <br>
+    The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  $encoded = $date-&gt;dateToDays( $date-&gt;now() );</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <h2><br>
+    <a name=func_encodedate>encodeDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  an alias for <a href="#func_datetodays"><span class="toc-item">dateToDays()</span></a>.</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_daystodate>daysToDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  daysToDate (string timestamp [, string format])</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Converts a number of days since a long distant epoch to a vlibDate timestamp 
+    or to a format specified by the<br>
+    format parameter.</p>
+  <p> The timestamp parameter is a vlibDate timestamp. For more information, please 
+    see the <a href="#sec_important" class="toc-item">IMPORTANT</a> section. </p>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  echo $date-&gt;dayToDate($encoded);</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <h2><br>
+    <a name=func_decodedate>decodeDate()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="91%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  an alias for <a href="#func_daystodate"><span class="toc-item">daysToDate()</span></a>.</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>&nbsp;</p>
+  <h2><a name=func_getyear>getYear()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody>
+    <tr>
+      <td align=middle>
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody>
+          <tr>
+            <td> 
+              <pre>  getYear()</pre>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p>Returns the current year in YYYY format.<br>
+    <br>
+  </p>
+  <h2><a name=func_getmonth>getMonth()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getMonth()</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the current month in MM format.<br>
+    <br>
+  </p>
+  <h2><a name=func_getday>getDay()</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a><br>
+  </h2>
+  <table cellspacing=0 cellpadding=1 width="92%" bgcolor=#000000 border=0>
+    <tbody> 
+    <tr> 
+      <td align=middle> 
+        <table cellspacing=0 cellpadding=4 width="100%" bgcolor=#e8e8e8
+border=0>
+          <tbody> 
+          <tr> 
+            <td> 
+              <pre>  getDay()</pre>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </td>
+    </tr>
+    </tbody> 
+  </table>
+  <p>Returns the current day in DD format.<br>
+  </p>
+  <p><br>
+  </p>
+  <h1><a name=sec_bugs>BUGS</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>vlibDate needs testing on different systems. It has been tested on Win32 
+    and works well.<br>
+    If you find a bug, or what you think is a bug, then send an e-mail to <a href="mailto:vlib@activefish.com" class="toc-item">vlib@activefish.com</a> 
+    with any helpful information.<br>
+    <br>
+    When submitting bug reports, be sure to include full details, including the 
+    VERSION of the class and a test script.<br>
+    <br>
+    <br>
+  </p>
+  <h1><a name=sec_credits>CREDITS</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Credit goes to the authors of DAte::Calc, the CPAN package. This is where 
+    I got alot of functionality ideas from.<br>
+    Many thanks to them for the inspiration. See <a href="http://www.cpan.org" target="_blank" class="toc-item">http://www.cpan.org</a>.</p>
+  <p><br>
+  </p>
+  <h1><a name=sec_author>AUTHOR</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Kelvin Jones. Contact me at <a href="mailto:kelvin@kelvinjones.co.uk" class="toc-item">kelvin@kelvinjones.co.uk</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_download>DOWNLOAD</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Download the latest version from <a href="http://www.activefish.com/vlib/downloads/" target="_blank" class="toc-item">http://www.activefish.com/vlib/downloads/</a>.</p>
+  <p> <br>
+  </p>
+  <h1><a name=sec_license>LICENSE</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>vLIB is licenced under the OpenSource Artistic Licence (<a href="http://www.opensource.org/licenses/artistic-license.html" target="_blank" class="toc-item">http://www.opensource.org/licenses/artistic-license.html</a>).<br>
+    Please see the <a href="../LICENSE" target="_blank" class="toc-item">LICENSE</a>
+    file available within the archive.</p>
+  <p> </p>
+  <p><br>
+  </p>
+  <h1><a name=sec_install>INSTALL</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>Please see the <a href="../INSTALL" target="_blank" class="toc-item">INSTALL</a> 
+    file available within the archive.<br>
+    <br>
+    <br>
+  </p>
+  <h1><a name=sec_forum>FORUM</a>&nbsp; <a
+  href="#top"><img
+  height=18 alt=toc src="vlibdoc_files/uparrow.gif" border=0 18></a></h1>
+  <p>There are now forums where you can discuss vlib at <a href="http://www.activefish.com/vlib/forum/" class="toc-itemnouner">http://www.activefish.com/vlib/forum/</a>.</p>
+  <p>&nbsp; </p>
+  <p>&nbsp; </p>
+</BLOCKQUOTE>
+</BODY></HTML>

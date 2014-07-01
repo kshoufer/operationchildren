@@ -1,0 +1,38 @@
+<form action="EditUser.php" method="GET">
+<input type="hidden" name="id" value="<tmpl_var name='UserID'>">
+<table border="0" cellspacing="0" cellpadding="3">
+<tr>
+  <td nowrap><B>Admin Name:</B></td>
+  <td width="100%"><input type="text" name="Name" value="<tmpl_var name='Name'>" style="width: 250px;"></td>
+</tr>
+<tr>
+  <td nowrap><B>Email:<B></td>
+  <td width="100%"><input type="text" name="Email" value="<tmpl_var name='Email'>"  style="width: 250px;"> (will be used as login)</td>
+</tr>
+<tr>
+  <td nowrap><B>Password:</B></td>
+  <td width="100%"><input type="password" name="Password" value="<tmpl_var name='Password'>"> (must be at least 6 characters long)</td>
+</tr>
+<tr>
+  <td nowrap><b>Access Level:</b></td>
+  <td width="100%">
+  <select name="AccessLevel" id="AccessLevel">
+    <option value="">-Select One-</option>
+    <tmpl_if name='HasAccessLevels'>
+      <tmpl_loop name='AccessLevels'>
+        <tmpl_if name='selected'>
+          <option value="<tmpl_var name='Name'>" selected><tmpl_var name='Name'></option>
+        <tmpl_else>
+          <option value="<tmpl_var name='Name'>"><tmpl_var name='Name'></option>
+        </tmpl_if>
+      </tmpl_loop>
+    </tmpl_if>
+  </select>
+  </td>
+</tr>
+<tr>
+  <td nowrap>&nbsp;</td>
+  <td width="100%"><input type="submit" name="Save" value="Save"></td>
+</tr>
+</table>
+</form>
