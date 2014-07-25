@@ -5,12 +5,37 @@
 <title>Welcome to Operation Children: News</title>
 <style type="text/css">
 <!--
-body {
-	background-image: url(images/header.jpg);
-	background-repeat: no-repeat;
-	background-position:top center;
-}
+  body {
+  	background-image: url(images/header.jpg);
+  	background-repeat: no-repeat;
+  	background-position:top center;
+  }
 
+  .cropped-image {
+     width: 100px; // crop by width
+     -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+     border-radius: 10px;
+     -moz-box-shadow:    2px 3px 3px 3px #777;
+    -webkit-box-shadow: 2px 3px 3px 3px #777;
+    box-shadow:         2px 3px 3px 3px #777;
+  }
+
+  .cropped-image:hover {
+    -moz-box-shadow:    1px 2px 2px 2px #333;
+    -webkit-box-shadow: 1px 2px 2px 2px #333;
+    box-shadow:         1px 2px 2px 2px #333;
+  }
+
+  #president-link {
+    text-decoration: none;
+  }  
+
+  #president-link:hover {
+    background-color: #DBE6FD;
+  }  
+
+}
 
 -->
 </style>
@@ -98,8 +123,8 @@ body {
   <table width="690" border="0" cellspacing="0" cellpadding="0" style="display:block; margin-left:auto; margin-right:auto;">
     <tr>
       
-      <td style="border:3px solid darkblue;"><a href="letterfrompresident.html"><img src="images/LHPicNewsletter.jpg" alt="President Image" width="100" border="0" /></a></td>
-      <td style="padding:5px;"><h3><a href="letterfrompresident.html">Click here for a Letter from the president</a><br /></h3></td>
+      <td><a href="letterfrompresident.html"><img class="cropped-image" src="images/LHPicNewsletter.jpg" alt="President Image" width="100" border="0" /></a></td>
+      <td style="padding-left:15px;"><h3><a id="president-link" href="letterfrompresident.html">Click here for a Letter from the president</a><br /></h3></td>
     </tr>
   
   </table>
