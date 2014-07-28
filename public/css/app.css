@@ -1,0 +1,14 @@
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background: none repeat scroll 0% 0% rgba(0, 120, 160, 1);
+}
+
+.top-bar {
+  background: none repeat scroll 0% 0% rgba(0, 120, 160, 1);
+}
+.pricing-table .title {
+  background-color: rgba(0, 120, 160, 1);
+}
+
+#paypal-tribute-btn {
+	margin: auto;
+}
