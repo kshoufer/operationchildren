@@ -11,6 +11,26 @@ body {
 	background-position:top center;
 }
 
+#purchase-box {
+  background-color: #1C8A32;
+  padding: 0 5px 20px 5px;
+  margin: 0 -5px 0 -5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#purchase-title {
+  font-size: 1.5em;
+  text-align: center;
+  color: #fff;
+}
+
+#purchase-dropdown {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
 
 -->
 </style>
@@ -151,12 +171,12 @@ Dedicated to Helping Children in Need</span>
 
 <a href="2014-gala-information.html"><img src="images/2014-gala-button-rounded3.png" width="164"  alt=""/></a><br /><br />
 
-
+<div  id="purchase-box">
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="2YTAXWL8JYLNQ">
   <table>
-  <tr><td><input type="hidden" name="on0" value="Number of tickets">Purchase Tickets Here</td></tr><tr><td><select name="os0">
+  <tr><td><input type="hidden" name="on0" value="Number of tickets"><h2 id="purchase-title">Purchase Tickets Here</h2></td></tr><tr><td><select id="purchase-dropdown" name="os0">
    <option value="1 Ticket">1 Ticket $175</option>
    <option value="2 Tickets">2 Tickets $350</option>
    <option value="3 Tickets">3 Tickets $525</option>
@@ -173,6 +193,7 @@ Dedicated to Helping Children in Need</span>
   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
   <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+</div>
 
 <br />
 
@@ -266,15 +287,14 @@ Dedicated to Helping Children in Need</span>
             </div></td>
           <td rowspan="2">&nbsp;</td>
           <td>
-          <div style="width:225px;">
+          <div style="width:225px; float:right">
+              <span class="smallheader">Make a Donation</span><br />
               <a href="donate.html" target="_blank"><div style="width: 90px; float:left; padding-top:10px;">
                 <img src="images/makeadonation.jpg" width="80" height="80" alt="Join Operation: Children" /> </br><br />
               <img src="images/moreinfo.jpg" width="88" height="39" alt="Click for More Info" style="position:relative; z-index:-1; top:-15px; left: 5px;"  /></div></a>
               
               
               
-              <div style="width:135px; float:right;"><span class="smallheader">Make a Donation</span><br />
-              </div>
               
             </div>
           
